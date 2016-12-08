@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Charicare2.Data;
 using Charicare2.Models;
 using Charicare2.Services;
+using Stripe;
 
 namespace Charicare2
 {
@@ -77,6 +78,7 @@ namespace Charicare2
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            StripeConfiguration.SetApiKey("sk_test_SzVE1lDZ8Fx4Kga7b0lLvOni");  //2nd step//
 
             app.UseApplicationInsightsExceptionTelemetry();
 

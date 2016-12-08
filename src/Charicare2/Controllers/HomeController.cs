@@ -13,9 +13,9 @@ namespace Charicare2.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult AboutUs()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "Your organization description page.";
 
             return View();
         }

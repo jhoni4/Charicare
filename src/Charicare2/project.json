@@ -1,4 +1,4 @@
-﻿{
+{
   "userSecretsId": "aspnet-Charicare2-dbae9b6c-35f6-47d8-8f10-ddd22076b4e8",
 
   "dependencies": {
@@ -41,10 +41,11 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc":  {
+    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "Stripe.net": "6.12.0"
   },
 
   "tools": {
