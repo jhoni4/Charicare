@@ -20,6 +20,12 @@
     "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.1",
     "Microsoft.AspNetCore.StaticFiles": "1.0.0",
+    "Microsoft.EntityFrameworkCore": "1.0.1",
+    "Microsoft.EntityFrameworkCore.Sqlite": "1.0.1",
+    "Microsoft.EntityFrameworkCore.Design": {
+      "version": "1.0.0-preview2-final",
+      "type": "build"
+    },
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
     "Microsoft.EntityFrameworkCore.SqlServer.Design": {
       "version": "1.0.1",
@@ -41,10 +47,13 @@
       "version": "1.0.0-preview2-final",
       "type": "build"
     },
-    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc":  {
+    "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "System.Linq.Queryable": "4.0.1",
+    "System.Linq.Parallel": "4.0.1",
+    "System.Linq": "4.1.0"
   },
 
   "tools": {

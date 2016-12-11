@@ -22,7 +22,8 @@ namespace Charicare2
             var builder = new ConfigurationBuilder()
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddEnvironmentVariables();
 
             if (env.IsDevelopment())
             {
@@ -33,7 +34,6 @@ namespace Charicare2
                 builder.AddApplicationInsightsSettings(developerMode: true);
             }
 
-            builder.AddEnvironmentVariables();
             Configuration = builder.Build();
         }
 
@@ -45,8 +45,13 @@ namespace Charicare2
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            string path = System.Environment.GetEnvironmentVariable("Yonazone_ChariCare2_Path");
+            var connection = $"Filename={path}";
+            Console.WriteLine($"connection = {connection}");
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connection));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -57,6 +62,7 @@ namespace Charicare2
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+   
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
