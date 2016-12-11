@@ -8,9 +8,10 @@ using Charicare2.Data;
 namespace Charicare2.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20161208203108_Test_migration")]
+    partial class Test_migration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -43,8 +44,6 @@ namespace Charicare2.Data.Migrations
                     b.Property<bool>("EmailConfirmed");
 
                     b.Property<string>("FirstName");
-
-                    b.Property<bool>("IsActive");
 
                     b.Property<string>("LastName");
 
@@ -87,6 +86,38 @@ namespace Charicare2.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("Charicare2.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Address");
+
+                    b.Property<double>("ChargeAmount");
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<DateTime>("DateCreated");
+
+                    b.Property<string>("EmailAddress");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("LastName");
+
+                    b.Property<int>("PhoneNumber");
+
+                    b.Property<string>("State");
+
+                    b.Property<int>("ZipCode");
+
+                    b.HasKey("CustomerId");
+
+                    b.ToTable("Customer");
+                });
+
             modelBuilder.Entity("Charicare2.Models.Payment", b =>
                 {
                     b.Property<int>("PaymentId")
@@ -97,6 +128,14 @@ namespace Charicare2.Data.Migrations
                     b.Property<int>("CardNumber");
 
                     b.Property<DateTime>("Expiration");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 55);
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 55);
 
                     b.Property<string>("UserId");
 

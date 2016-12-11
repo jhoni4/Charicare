@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Charicare2.Models;
 using Charicare2.Models.AccountViewModels;
 using Charicare2.Services;
+using Charicare2.Data;
 
 namespace Charicare2.Controllers
 {

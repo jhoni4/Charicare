@@ -34,7 +34,7 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Payment" asp-action="Index">Donate</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="AboutUs">About Us</a></li>
-                    <li><a asp-area="" asp-controller="Customer" asp-action="Index">My Profile</a></li>
+                    <li><a asp-area="" asp-controller="Customers" asp-action="Index">My Profile</a></li>
                 </ul>
                 @await Html.PartialAsync("_LoginPartial")
             </div>
@@ -51,6 +51,7 @@
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
@@ -62,6 +63,7 @@
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 

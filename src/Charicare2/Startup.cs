@@ -13,6 +13,7 @@ using Charicare2.Data;
 using Charicare2.Models;
 using Charicare2.Services;
 using Stripe;
+using Charicare2.Configuration;
 
 namespace Charicare2
 {
@@ -29,7 +30,7 @@ namespace Charicare2
             {
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
                 builder.AddUserSecrets();
-
+                //StripeConfiguration.SetApiKey("");  //2nd step//
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
                 builder.AddApplicationInsightsSettings(developerMode: true);
             }
@@ -43,6 +44,9 @@ namespace Charicare2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Add PaymentSettings informations
+            services.Configure<PaymentSettings>(Configuration.GetSection("PaymentSettings")); //3rd step
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
@@ -78,7 +82,7 @@ namespace Charicare2
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            StripeConfiguration.SetApiKey("sk_test_SzVE1lDZ8Fx4Kga7b0lLvOni");  //2nd step//
+           
 
             app.UseApplicationInsightsExceptionTelemetry();
 
