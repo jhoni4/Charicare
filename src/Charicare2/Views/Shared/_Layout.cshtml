@@ -31,11 +31,25 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Donate</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About us</a></li>
+                    <li><a asp-area="" asp-controller="Donate" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
+                    <li class="nav-pills dropdown" role="presentation">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Donate <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="Donate" asp-action="Clothes">Clothes</a></li>
+                            <li><a asp-area="" asp-controller="Donate" asp-action="Money">Money</a></li>
+                            <li><a asp-area="" asp-controller="Donate" asp-action="Medical">Medical</a></li>
+                            <li><a asp-area="" asp-controller="Donate" asp-action="Goods">Goods</a></li>
+                        </ul>
+                    </li>
                 </ul>
-                @await Html.PartialAsync("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact Us</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a></li>
+                </ul>
+                @*@await Html.PartialAsync("_LoginPartial")*@
             </div>
         </div>
     </div>

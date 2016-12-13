@@ -8,7 +8,7 @@ using Charicare2.Models;
 
 namespace Charicare2.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -22,5 +22,11 @@ namespace Charicare2.Data
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
+        public DbSet<User> User { get; set; }
+        public DbSet<ClothesDonate> ClothesDonate { get; set; }
+        public DbSet<MoneyDonate> MoneyDonate { get; set; }
+        public DbSet<MedicalDonate> MedicalDonate { get; set; }
+        public DbSet<GoodsDonate> GoodsDonate { get; set; }
+        public DbSet<DonateType> DonateType { get; set; }
     }
 }

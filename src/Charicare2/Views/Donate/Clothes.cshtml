@@ -1,0 +1,85 @@
+@model Charicare2.Models.AppViewModels.DonateClothesIndexViewModel
+
+@{
+    ViewData["Title"] = "Donate Clothes";
+    ViewData["Message"] = @"Clothes accepted
+Linens: We are always in need of bath towels, face cloths, twin - size sheets and blankets, standard - size pillows and pillowcases, and sleeping bags.
+    Hygiene Items: We are always in need of soap, deodorant, toothbrushes, toothpaste, shaving cream and razors. Travel size is preferred.";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>@ViewData["Message"]</p>
+
+
+<h3>Please fillout this form</h3>
+<div class="well-sm">  
+    <form asp-controller="Donate" asp-action="Create">
+        <div class="form-horizontal">
+            <h4>DonateType</h4>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.User.FullName" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.User.FullName" class="form-control" />
+                    <span asp-validation-for="@Model.User.FullName" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.User.Telephone" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.User.Telephone" class="form-control" />
+                    <span asp-validation-for="@Model.User.Telephone" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.User.Email" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.User.Email" class="form-control" />
+                    <span asp-validation-for="@Model.User.Email" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.User.Street" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.User.Street" class="form-control" />
+                    <span asp-validation-for="@Model.User.Street" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.User.City" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.User.City" class="form-control" />
+                    <span asp-validation-for="@Model.User.City" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.User.State" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.User.State" class="form-control" />
+                    <span asp-validation-for="@Model.User.State" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ClothesDonate.Name" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.ClothesDonate.Name" class="form-control" />
+                    <span asp-validation-for="@Model.ClothesDonate.Name" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.ClothesDonate.Note" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="@Model.ClothesDonate.Note" class="form-control" />
+                    <span asp-validation-for="@Model.ClothesDonate.Note" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<a asp-action="Index">Back to List</a>

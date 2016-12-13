@@ -1,0 +1,59 @@
+@*@model Charicare2.Models.AppViewModels.UserFormViewModel
+@using Charicare2.Models.AppViewModels
+
+
+<form asp-controller="Donate" asp-action="Create" method="post">
+    <div class="form-horizontal">
+        <h4>DonateType</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="@Model.User.FullName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.User.FullName" class="form-control" />
+                <span asp-validation-for="@Model.User.FullName" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.User.Telephone" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.User.Telephone" class="form-control" />
+                <span asp-validation-for="@Model.User.Telephone" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.User.Email" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.User.Email" class="form-control" />
+                <span asp-validation-for="@Model.User.Email" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.User.Street" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.User.Street" class="form-control" />
+                <span asp-validation-for="@Model.User.Street" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.User.City" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.User.City" class="form-control" />
+                <span asp-validation-for="@Model.User.City" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="@Model.User.State" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="@Model.User.State" class="form-control" />
+                <span asp-validation-for="@Model.User.State" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>*@
+
