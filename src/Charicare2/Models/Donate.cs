@@ -6,25 +6,22 @@ using System.Threading.Tasks;
 
 namespace Charicare2.Models
 {
-    public class GoodsDonate
+    public class Donate
     {
         [Key]
-        public int GoodsDonateId { get; set; }
+        public int DonateId { get; set; }
 
-        [Required]
-        [StringLength(55)]
         public string Name { get; set; }
 
         [Required]
         [StringLength(255)]
         public string Note { get; set; }
 
-        public int DonateTypeId { get; set; }
+        public int Value { get; set; }
 
         public int UserId { get; set; }
 
-        public User User { get; set; }
-
+        public int DonateTypeId { get; set; }
 
     }
 }

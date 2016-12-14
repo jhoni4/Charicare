@@ -11,6 +11,8 @@ namespace Charicare2.Models.AppViewModels
     {
         public User User { get; set; }
 
+        public Donate Donate { get; set; }
+
         public BaseViewModel(ApplicationDbContext ctx)
         {
             context = ctx;

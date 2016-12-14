@@ -38,16 +38,16 @@
                             Donate <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a asp-area="" asp-controller="Donate" asp-action="Clothes">Clothes</a></li>
-                            <li><a asp-area="" asp-controller="Donate" asp-action="Money">Money</a></li>
-                            <li><a asp-area="" asp-controller="Donate" asp-action="Medical">Medical</a></li>
-                            <li><a asp-area="" asp-controller="Donate" asp-action="Goods">Goods</a></li>
+                            <li><a asp-area="" asp-controller="Donate" asp-action="ClothesIndex">Clothes</a></li>
+                            <li><a asp-area="" asp-controller="Donate" asp-action="MoneyIndex">Money</a></li>
+                            <li><a asp-area="" asp-controller="Donate" asp-action="MedicalIndex">Medical</a></li>
+                            <li><a asp-area="" asp-controller="Donate" asp-action="GoodsIndex">Goods</a></li>
                         </ul>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact Us</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Dashboard">Dashboard</a></li>
+                    <li><a asp-area="" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
                 </ul>
                 @*@await Html.PartialAsync("_LoginPartial")*@
             </div>
@@ -57,7 +57,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2016 - Charicare2</p>
+            <p>&copy; 2016 - Charicare</p>
         </footer>
     </div>
 

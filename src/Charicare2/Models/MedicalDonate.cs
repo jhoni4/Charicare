@@ -9,7 +9,7 @@ namespace Charicare2.Models
     public class MedicalDonate
     {
         [Key]
-        public int MedicalId { get; set; }
+        public int MedicalDonateId { get; set; }
 
         [Required]
         [StringLength(55)]
@@ -18,6 +18,8 @@ namespace Charicare2.Models
         [Required]
         [StringLength(255)]
         public string Note { get; set; }
+
+        public int DonateTypeId { get; set; }
 
         public int UserId { get; set; }
 

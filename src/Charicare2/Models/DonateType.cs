@@ -13,12 +13,7 @@ namespace Charicare2.Models
 
         public string Name { get; set; }
 
-        //public ICollection<ClothesDonate> ClothesDonates { get; set; }
-        //public ICollection<MedicalDonate> MedicalDonates { get; set; }
-        //public ICollection<MoneyDonate> MoneyDonates { get; set; }
-        //public ICollection<GoodsDonate> GoodsDonates { get; set; }
-
-
+        public string Description { get; set; }
 
 
     }

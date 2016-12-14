@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Charicare2.Models.AppViewModels
 {
-    public class DonateGoodsIndexViewModel : BaseViewModel
+    public class GoodsCreateViewModel : BaseViewModel
     {
         public Donate Donate { get; set; }
 
         public User User { get; set; }
 
-        public DonateGoodsIndexViewModel() { }
+        public GoodsCreateViewModel() { }
 
-        public DonateGoodsIndexViewModel(ApplicationDbContext ctx) : base(ctx) { }
+        public GoodsCreateViewModel(ApplicationDbContext ctx) : base(ctx) { }
     }
 }

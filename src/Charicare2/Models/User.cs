@@ -10,8 +10,11 @@ namespace Charicare2.Models
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class User 
     {
+        [Key]
         public int UserId { get; set; }
 
+        [Required]
+        [StringLength(55)]
         public string FullName { get; set; }
 
         public string Email { get; set; }

@@ -16,9 +16,9 @@
 </ul>
 
 <h3>Please fillout this form</h3>
-<div>
-    <hr />
-    @{ Html.RenderPartial("_LoginPartial");}
-    @*@await Html.PartialAsync("UserForm")*@
+<div class="well-sm">
+    <form asp-controller="Donate" asp-action="GoodsCreate">
+        @{Html.RenderPartial("_UserForm");}
+    </form>
 </div>
- <a asp-action="Index">Back to List</a>
+<a asp-action="Index">Back to List</a>

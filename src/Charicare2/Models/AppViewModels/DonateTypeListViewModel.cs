@@ -12,8 +12,6 @@ namespace Charicare2.Models.AppViewModels
 
         public List<DonateType> DonateTypes { get; set; }
 
-        public DonateType DonateType { get; set; }
-
         public DonateTypeListViewModel() { }
 
         public DonateTypeListViewModel(ApplicationDbContext ctx) : base(ctx) { }

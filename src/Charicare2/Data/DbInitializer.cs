@@ -24,150 +24,125 @@ namespace Charicare2.Data
                 var DonateTypes = new DonateType[]
                 {
                   new DonateType {
-                      Name = "Clothes"
+                      Name = "Clothes",
+                      Description = "This Catagory includes any type of clothes like pijamas, sheets, blankets, shoes.... "
                   },
                   new DonateType {
-                      Name = "Financial/Money"
+                      Name = "Financial/Money",
+                      Description = "This Category includes........"
                   },
                   new DonateType {
-                      Name = "Goods"
+                      Name = "Goods",
+                      Description = "This Category includes........"
                   },
                   new DonateType {
-                      Name = "Medical Supplies"
-                  },
+                      Name = "Medical Supplies",
+                      Description = "This Category includes........"
+                  }
                 };
+
                 foreach (DonateType i in DonateTypes)
                 {
                     context.DonateType.Add(i);
                 }
                 context.SaveChanges();
 
-                // 2  ClothesDonate.  - Seeding the database.
-                var ClothesDonates = new ClothesDonate[]
+                // 2  Donates.  - Seeding the database.
+
+                var Donates = new Donate[]
                 {
-                  new ClothesDonate {
+                  new Donate {
+                      Name = "Clothes",
+                      Note = "contact me in person",
+                      UserId = 3,
+                      DonateTypeId = 1,
+                      Value = 160
+                  },
+                  new Donate {
                       Name = "Pillow",
                       Note = "contact me in person",
-                      UserId = 3
+                      UserId = 2,
+                      DonateTypeId = 1,
+                      Value = 120
                   },
-                  new ClothesDonate {
+                  new Donate {
                       Name = "Blankets",
                       Note = "contact me in person",
-                      UserId = 3
+                      UserId = 4,
+                      DonateTypeId = 1,
+                      Value = 150
                   },
-                  new ClothesDonate {
-                      Name = "Sheets",
-                      Note = "contact me in person",
-                      UserId = 3
-                  },
-                  new ClothesDonate {
-                      Name = "Soacks",
-                      Note = "contact me in person",
-                      UserId = 1
-                  },
-                  new ClothesDonate {
-                      Name = "Pants",
-                      Note = "contact me in person",
-                      UserId = 1
-                  }
-                };
-                foreach (ClothesDonate i in ClothesDonates)
-                {
-                    context.ClothesDonate.Add(i);
-                }
-                context.SaveChanges();
-
-                // 3  MedicalDonates.  - Seeding the database.
-                var MedicalDonates = new MedicalDonate[]
-                {
-                  new MedicalDonate {
+                  new Donate {
                       Name = "Vitamine B12",
                       Note = "contact me in person",
-                      UserId = 4
+                      UserId = 1,
+                      DonateTypeId = 4,
+                      Value = 110
                   },
-                  new MedicalDonate {
+                  new Donate {
                       Name = "Advil",
                       Note = "contact me in person",
-                      UserId = 2
+                      UserId = 2,
+                      DonateTypeId = 4,
+                      Value = 120
                   },
-                  new MedicalDonate {
-                      Name = "Tylnole",
-                      Note = "contact me in person",
-                      UserId = 3
-                  },
-                  new MedicalDonate {
+                  new Donate {
                       Name = "Sanitaizer",
                       Note = "contact me in person",
-                      UserId = 1
-                  }
-                };
-                foreach (MedicalDonate i in MedicalDonates)
-                {
-                    context.MedicalDonate.Add(i);
-                }
-                context.SaveChanges();
-
-                // 4  MoneyDonate.  - Seeding the database.
-                var MoneyDonates = new MoneyDonate[]
-                {
-                  new MoneyDonate {
-                      Amount = 300,
-                      Note = "contact me in person",
-                      UserId = 2
+                      UserId = 4,
+                      DonateTypeId = 4,
+                      Value = 210
                   },
-                  new MoneyDonate {
-                      Amount = 200,
+                  new Donate {
+                      Name = "Cash",
                       Note = "contact me in person",
-                      UserId = 3
+                      UserId = 2,
+                      DonateTypeId = 2,
+                      Value = 200
                   },
-                  new MoneyDonate {
-                      Amount = 50,
+                  new Donate {
+                      Name = "Cash",
                       Note = "contact me in person",
-                      UserId = 1
+                      UserId = 3,
+                      DonateTypeId = 2,
+                      Value = 100
                   },
-                  new MoneyDonate {
-                      Amount = 100,
+                  new Donate {
+                      Name = "Cash",
                       Note = "contact me in person",
-                      UserId = 2
-                  }
-                };
-                foreach (MoneyDonate i in MoneyDonates)
-                {
-                    context.MoneyDonate.Add(i);
-                }
-                context.SaveChanges();
-
-                // 5  GoodsDonate.  - Seeding the database.
-                var GoodsDonates = new GoodsDonate[]
-                {
-                  new GoodsDonate {
-                      Name = "mattress",
-                      Note = "contact me in person",
-                      UserId = 3
+                      UserId = 2,
+                      DonateTypeId = 2,
+                      Value = 50
                   },
-                  new GoodsDonate {
+                  new Donate {
+                      Name = "Computer",
+                      Note = "contact me in person",
+                      UserId = 3,
+                      DonateTypeId = 3,
+                      Value = 2000
+                  },
+                  new Donate {
                       Name = "Tooth Brushs",
                       Note = "contact me in person",
-                      UserId = 2
+                      UserId = 2,
+                      DonateTypeId = 3,
+                      Value = 610
                   },
-                  new GoodsDonate {
+                  new Donate {
                       Name = "Books",
                       Note = "contact me in person",
-                      UserId = 1
-                  },
-                  new GoodsDonate {
-                      Name = "Plates",
-                      Note = "contact me in person",
-                      UserId = 1
+                      UserId = 4,
+                      DonateTypeId = 3,
+                      Value = 210
                   }
                 };
-                foreach (GoodsDonate i in GoodsDonates)
+                foreach (Donate i in Donates)
                 {
-                    context.GoodsDonate.Add(i);
+                    context.Donate.Add(i);
                 }
                 context.SaveChanges();
 
-                // 5  User.  - Seeding the database.
+                // 3  User.  - Seeding the database.
                 var Users = new User[]
                 {
                   new User {

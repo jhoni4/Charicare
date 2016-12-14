@@ -8,11 +8,9 @@ namespace Charicare2.Models.AppViewModels
 {
     public class ClothCreateViewModel : BaseViewModel
     {
-        public ClothesDonate ClothesDonate { get; set; }
+        public int DonateTypeId { get; set; }
 
-        public string Note { get; set; }
-
-        public User User { get; set; }
+        public int UserId { get; set; }
 
         public ClothCreateViewModel() { }
 

@@ -1,0 +1,36 @@
+﻿@model Charicare2.Models.AppViewModels.DashboardListViewModel
+
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <p>Lists of all donates</p>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.donates)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.DonateTypeId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.DonateTypeId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.DonateTypeId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

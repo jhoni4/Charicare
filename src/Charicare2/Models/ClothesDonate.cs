@@ -9,19 +9,22 @@ namespace Charicare2.Models
     public class ClothesDonate
     {
         [Key]
-        public int ClothesId { get; set; }
+        public int ClothesDonateId { get; set; }
 
         [Required]
         [StringLength(55)]
         public string Name { get; set; }
 
-        [Required]
+        //[Required]
         [StringLength(255)]
         public string Note { get; set; }
+
+        public int DonateTypeId { get; set; }
 
         public int UserId { get; set; }
 
         public User User { get; set; }
+
 
     }
 }

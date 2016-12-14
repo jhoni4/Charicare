@@ -25,6 +25,7 @@ namespace Charicare2.Controllers
         }
 
         // GET: Donate
+        //Creates new Goods Donation
         public async Task<IActionResult> Index()
         {
             var model = new DonateTypeListViewModel(context);
@@ -33,60 +34,117 @@ namespace Charicare2.Controllers
             return View(model);
         }
 
-        public async Task<IActionResult> Clothes()
+        public async Task<IActionResult> ClothesIndex()
         {
-            var model = new DonateClothesIndexViewModel(context);
+            DonateClothesIndexViewModel model = new DonateClothesIndexViewModel(context);
 
             return View(model);
         }
-        public async Task<IActionResult> Goods()
-        {
-            var model = new DonateGoodsIndexViewModel(context);
 
-            return View(model);
-        }
-        public async Task<IActionResult> Medical()
+        //Creates Clothes Donation Form/Index
+        public async Task<IActionResult> ClothesCreate(ClothCreateViewModel model)
         {
-            var model = new DonateMedicalIndexViewModel(context);
+            User u = new User();
+            Donate d = new Donate();
+            if (model.User.Equals(context.User.Where(e => e.FullName == model.User.FullName )))
+            {
 
-            return View(model);
-        }
-        public async Task<IActionResult> Money()
-        {
-            var model = new DonateMoneyIndexViewModel(context);
+                u = context.User.Where(e => e.FullName == model.User.FullName && e.City == model.User.City && e.Email == model.User.Email && e.State == model.User.State && e.Telephone == model.User.Telephone && e.Street == model.User.Street).SingleOrDefault();
+                d.DonateTypeId = 1;
+                d.Name = model.Donate.Name;
+                d.Note = model.Donate.Note;
+                d.Value = model.Donate.Value;
+                d.UserId = u.UserId;
 
-            return View(model);
-        }
-        //public async Task<IActionResult> Create(User User)
-        //{
-        //    var model = new ClothCreateViewModel(context);
+            }
+            else
+            {
+                u.FullName = model.User.FullName;
+                u.Email = model.User.Email;
+                u.Street = model.User.Street;
+                u.City = model.User.City;
+                u.State = model.User.State;
+                u.Telephone = model.User.Telephone;
 
-        //    return View(model);
-        //}
-        public async Task<IActionResult> Create(ClothesDonate ClothesDonate, User User)
-        {
+                context.User.Add(u);
+                context.SaveChanges();
+
+                d.DonateTypeId = 1;
+                d.Name = model.Donate.Name;
+                d.Note = model.Donate.Note;
+                d.Value = model.Donate.Value;
+                d.UserId = context.User.Where(e => e.FullName == model.User.FullName && e.City == model.User.City && e.Email == model.User.Email && e.State == model.User.State && e.Telephone == model.User.Telephone && e.Street == model.User.Street).SingleOrDefault().UserId;
+                
+
+
+            };
+
+            context.Donate.Add(d);
+            context.SaveChanges();
 
 
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Create", "Donate");
+                return RedirectToAction("ClothesIndex", "Donate");
             }
 
-            context.Add(ClothesDonate);
+            try
+            {
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+
+            catch (DbUpdateException)
+            {
+                return RedirectToAction("ClothesIndex", "Donate");
+            }
+        }
+
+        //Creates Goods Donation Form/Index
+        public async Task<IActionResult> GoodsIndex()
+        {
+            DonateGoodsIndexViewModel model = new DonateGoodsIndexViewModel(context);
+
+            return View(model);
+        }
+
+        //Creates new Goods Donation 
+        public IActionResult GoodsCreate(Donate Donate, User User)
+        {
+            GoodsCreateViewModel model = new GoodsCreateViewModel(context);
+
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("GoodsIndex", "Donate");
+            }
+
+            context.Add(Donate);
             context.Add(User);
 
             try
             {
                 context.SaveChanges();
-
-                return RedirectToAction("Index", "Donate");
+                return RedirectToAction("Index", "Home");
             }
 
             catch (DbUpdateException)
             {
-                return RedirectToAction("Create", "Donate");
+                return RedirectToAction("GoodsIndex", "Donate");
             }
         }
+        public async Task<IActionResult> MedicalIndex()
+        {
+            var model = new DonateMedicalIndexViewModel(context);
+
+            return View(model);
+        }
+        public async Task<IActionResult> MoneyIndex()
+        {
+            var model = new DonateMoneyIndexViewModel(context);
+
+            return View(model);
+        }
+       
 
     }
 }
