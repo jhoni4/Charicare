@@ -8,8 +8,8 @@ using Charicare2.Data;
 namespace Charicare2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161213202949_CCCBMigration")]
-    partial class CCCBMigration
+    [Migration("20161214221057_NEW2Migration")]
+    partial class NEW2Migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

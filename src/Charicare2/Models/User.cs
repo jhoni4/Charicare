@@ -17,9 +17,13 @@ namespace Charicare2.Models
         [StringLength(55)]
         public string FullName { get; set; }
 
+        [Required]
+        //[DataType(DataType.EmailAddress)]
+        //[EmailAddress]
         public string Email { get; set; }
 
-        public int Telephone { get; set; }
+        [DisplayFormat(DataFormatString = "{0:###-###-####}")]
+        public long Telephone { get; set; }
 
         public string Street { get; set; }
 

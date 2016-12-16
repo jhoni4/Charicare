@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Mvc;
 using Charicare2.Models.AppViewModels;
 using Charicare2.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Charicare2.Models;
+using Newtonsoft.Json.Linq;
 
 namespace Charicare2.Controllers
 {
@@ -21,12 +24,27 @@ namespace Charicare2.Controllers
             context = ctx;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             DashboardListViewModel model = new DashboardListViewModel(context);
-            model.DonateTypes = await context.DonateType.ToListAsync();
-            model.donates = await context.Donate.ToListAsync();
-            model.donners = await context.User.ToListAsync();
+            model.DonateTypes = context.DonateType.ToList();
+            model.donates = context.Donate.ToList();
+            model.donners = context.User.ToList();
+
+            ////To get count of donners for earch donate type
+            var ClothDonationList = model.donates.Where(l => l.DonateTypeId == 1).ToList();
+            model.TotalCountOfClothesDonners = ClothDonationList.Count();
+            var MoneyDonationList = model.donates.Where(l => l.DonateTypeId == 2).ToList();
+            model.TotalCountOfMoneyDonners = MoneyDonationList.Count();
+            var GoodsDonationList = model.donates.Where(l => l.DonateTypeId == 3).ToList();
+            model.TotalCountOfGoodsDonners = GoodsDonationList.Count();
+            var MedicalDonationList = model.donates.Where(l => l.DonateTypeId == 4).ToList();
+            model.TotalCountOfMedicalDonners = MedicalDonationList.Count();
+
+            ////To get Total amount of money donated
+            model.TotalAmontOfMoney = MoneyDonationList.Sum(x => x.Value);
+
+
 
             return View(model);
         }

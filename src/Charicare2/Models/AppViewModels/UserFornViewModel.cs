@@ -19,8 +19,6 @@ namespace Charicare2.Models.AppViewModels
 
         public string State { get; set; }
 
-        //public User User { get; set; }
-
         public UserFormViewModel()  { }
     }
 }

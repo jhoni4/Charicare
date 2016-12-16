@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Charicare2.Migrations
 {
-    public partial class CCCBMigration : Migration
+    public partial class NEW2Migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

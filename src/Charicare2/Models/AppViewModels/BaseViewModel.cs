@@ -17,6 +17,11 @@ namespace Charicare2.Models.AppViewModels
         {
             context = ctx;
         }
+
+        public string LastPerson { get; set; }
+        
+        public string Donator { get; set; }
+
         public BaseViewModel() { }
 
         private ApplicationDbContext context;

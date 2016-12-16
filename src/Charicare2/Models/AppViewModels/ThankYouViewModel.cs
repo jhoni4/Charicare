@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Charicare2.Models.AppViewModels
 {
-    public class GoodsCreateViewModel : BaseViewModel
+    public class ThankYouViewModel : BaseViewModel
     {
-        public GoodsCreateViewModel() { }
+        public ThankYouViewModel() { }
 
-        public GoodsCreateViewModel(ApplicationDbContext ctx) : base(ctx) { }
+        public ThankYouViewModel(ApplicationDbContext ctx) : base(ctx) { }
     }
 }

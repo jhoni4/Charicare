@@ -13,11 +13,10 @@ namespace Charicare2.Models
 
         public string Name { get; set; }
 
-        [Required]
         [StringLength(255)]
         public string Note { get; set; }
 
-        public int Value { get; set; }
+        public double Value { get; set; }
 
         public int UserId { get; set; }
 

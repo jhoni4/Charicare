@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Donate Categories";
-    ViewData["Mssage"] = "Your donations to The ChariCare,  help transform lives! It is financial contributions that make it possible for The Bowery Mission, Mont Lawn Camp and Mont Lawn City Camp to provide help and hope to the homeless and poor in Nashville City. ";
+    ViewData["Mssage"] = "Your donations to The ChariCare,  help transform lives! It is financial contributions that make it possible for The ChariCare Mission, Seniors helping Camp and hope to the homeless and poor in Ethiopia. ";
 }
 
 <div class="panel panel-default">
@@ -11,22 +11,46 @@
     <div class="panel-body">
         <p>@ViewData["Mssage"]</p>
     </div>
-
-    <!-- Table -->
-    <table class="table">
-        <ul>
-            <li>
-                <a asp-controller="Donate" asp-action="ClothesIndex">@Html.DisplayFor(model => model.DonateTypes[0].Name)</a>
-            </li>
-            <li>
-                <a asp-controller="Donate" asp-action="MoneyIndex">@Html.DisplayFor(model => model.DonateTypes[1].Name)</a>
-            </li>
-            <li>
-                <a asp-controller="Donate" asp-action="GoodsIndex">@Html.DisplayFor(model => model.DonateTypes[2].Name)</a>
-            </li>
-            <li>
-                <a asp-controller="Donate" asp-action="MedicalIndex">@Html.DisplayFor(model => model.DonateTypes[3].Name)</a>
-            </li>
-        </ul>
-    </table>
+</div>
+<div class="well ">
+    <div class="row">
+        <div class="col-md-6 columns">
+            <section>
+                <a asp-controller="Donate" asp-action="ClothesIndex">
+                    <div class="image"><img src="/images/made/" alt="Clothes pic" width="500" height="300" /></div>
+                    <h3 class="title">Donate Clothes</h3>
+                    @*@Html.DisplayFor(model => model.DonateTypes[0].Name)*@
+                </a>
+            </section>
+        </div>
+        <div class="col-md-5 columns">
+            <section>
+                <a asp-controller="Donate" asp-action="MoneyIndex">
+                    <div class="image"><img src="/images/" alt="Money pic" width="500" height="300" /></div>
+                    <h3 class="title">Donate Money</h3>
+                    @*@Html.DisplayFor(model => model.DonateTypes[1].Name)*@
+                </a>
+            </section>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 columns">
+            <section>
+                <a asp-controller="Donate" asp-action="GoodsIndex">
+                    <div class="image"><img src="/images/" alt="Goods pic" width="500" height="300" /></div>
+                    <h3 class="title">Donate Goods</h3>
+                    @*@Html.DisplayFor(model => model.DonateTypes[2].Name)*@
+                </a>
+            </section>
+        </div>
+        <div class="col-md-6 columns">
+            <section>
+                <a asp-controller="Donate" asp-action="MedicalIndex">
+                    <div class="image"><img src="/images/" alt="Medical pic" width="500" height="300" /></div>
+                    <h3 class="title">Donate Medical</h3>
+                    @*@Html.DisplayFor(model => model.DonateTypes[3].Name)*@
+                </a>
+            </section>
+        </div>
+    </div>
 </div>

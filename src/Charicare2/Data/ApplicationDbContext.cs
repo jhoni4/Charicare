@@ -23,10 +23,6 @@ namespace Charicare2.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
         public DbSet<User> User { get; set; }
-        //public DbSet<ClothesDonate> ClothesDonate { get; set; }
-        //public DbSet<MoneyDonate> MoneyDonate { get; set; }
-        //public DbSet<MedicalDonate> MedicalDonate { get; set; }
-        //public DbSet<GoodsDonate> GoodsDonate { get; set; }
         public DbSet<DonateType> DonateType { get; set; }
         public DbSet<Donate> Donate { get; set; }
 
