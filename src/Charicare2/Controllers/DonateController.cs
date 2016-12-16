@@ -294,21 +294,21 @@ namespace Charicare2.Controllers
             return RedirectToAction("Index", "Home");
 
 
-            //if (!ModelState.IsValid)
-            //{
-            //    return RedirectToAction("ClothesIndex", "Donate");
-            //}
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("MoneyIndex", "Donate");
+            }
 
-            //try
-            //{
-            //    context.SaveChanges();
-            //    return RedirectToAction("Index", "Home");
-            //}
+            try
+            {
+                context.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
 
-            //catch (DbUpdateException)
-            //{
-            //    return RedirectToAction("ClothesIndex", "Donate");
-            //}
+            catch (DbUpdateException)
+            {
+                return RedirectToAction("MoneyIndex", "Donate");
+            }
         }
 
         public IActionResult ThankYou(ClothCreateViewModel model)
