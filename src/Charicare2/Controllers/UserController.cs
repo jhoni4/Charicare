@@ -24,7 +24,7 @@ namespace Charicare2.Controllers
         }
 
         //// GET: Donate
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> UserIndex()
         {
             var model = new UserFormViewModel();
 
@@ -38,9 +38,9 @@ namespace Charicare2.Controllers
         //    return View(model);
         //}
 
-        public async Task<IActionResult> Create(User User)
+        public async Task<IActionResult> CreateUser(User User)
         {
-            UserCreateViewModel model = new UserCreateViewModel(context);
+            //UserCreateViewModel model = new UserCreateViewModel(context);
 
             if (!ModelState.IsValid)
             {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Charicare2.Data;
 
 namespace Charicare2.Models.AppViewModels
 {
@@ -20,5 +21,9 @@ namespace Charicare2.Models.AppViewModels
         public string State { get; set; }
 
         public UserFormViewModel()  { }
+
+        public UserFormViewModel(ApplicationDbContext ctx) : base(ctx)
+        {
+        }
     }
 }
