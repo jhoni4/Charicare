@@ -6,15 +6,22 @@
 
 }
 
-<h2>@ViewData["Title"]</h2>
-<p>@ViewData["Mssage"]</p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>@ViewData["Title"]</h2>
+        <img src="~/images/m4.jpg" alt="Clothes" width="1100" />
+    </div>
+    <div class="panel-body">
+        <p>@ViewData["Message"]</p>
+    </div>
+</div>
 
 <hr />
 
 <h3>Please fillout this form</h3>
 <div class="well-sm">
     <form asp-controller="Donate" asp-action="MoneyCreate">
-        @{Html.RenderPartial("_UserForm");}
+        @{Html.RenderPartial("_DonateForm");}
     </form>
 </div>
 <a asp-action="Index">Back to List</a>

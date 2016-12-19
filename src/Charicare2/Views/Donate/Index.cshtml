@@ -2,55 +2,69 @@
 
 @{
     ViewData["Title"] = "Donate Categories";
-    ViewData["Mssage"] = "Your donations to The ChariCare,  help transform lives! It is financial contributions that make it possible for The ChariCare Mission, Seniors helping Camp and hope to the homeless and poor in Ethiopia. ";
+    ViewData["Message"] = "Your donations to The ChariCare,  help transform lives! It is financial contributions that make it possible for The ChariCare Mission, Seniors helping Camp and hope to the homeless and poor in Ethiopia. ";
 }
 
 <div class="panel panel-default">
-    <!-- Default panel contents -->
-    <div class="panel-heading"><h2>@ViewData["Title"]</h2></div>
+    <div class="panel-heading">
+        <h2>@ViewData["Title"]</h2>
+        <img src="~/images/o7.jpg" alt="Clothes" width="1100" />
+    </div>
     <div class="panel-body">
-        <p>@ViewData["Mssage"]</p>
+        <p>@ViewData["Message"]</p>
     </div>
 </div>
 <div class="well ">
     <div class="row">
-        <div class="col-md-6 columns">
-            <section>
-                <a asp-controller="Donate" asp-action="UserIndex">
-                    <div class="image"><img src="/images/made/" alt="Clothes pic" width="500" height="300" /></div>
-                    <h3 class="title">Donate Clothes</h3>
-                    @*@Html.DisplayFor(model => model.DonateTypes[0].Name)*@
+        <div class="col-md-6">
+            <div class="menuLink">
+                <a asp-controller="Donate" asp-action="ClothesIndex">
+                    <div class="caption">
+                        <div class="caption-content">
+                            <h3>Donate Clothes</h3>
+                        </div>
+                    </div>
+                    <img src="~/images/clothe1.jpg" alt="Clothes pic" width="500" height="300"/>
                 </a>
-            </section>
+            </div>
         </div>
-        <div class="col-md-5 columns">
-            <section>
+        <div class="col-md-6">
+            <div class="menuLink">
                 <a asp-controller="Donate" asp-action="MoneyIndex">
-                    <div class="image"><img src="/images/" alt="Money pic" width="500" height="300" /></div>
-                    <h3 class="title">Donate Money</h3>
-                    @*@Html.DisplayFor(model => model.DonateTypes[1].Name)*@
+                    <div class="caption">
+                        <div class="caption-content">
+                            <h3>Donate Money</h3>
+                        </div>
+                    </div>
+                    <img src="~/images/m2.png" alt="Money pic" width="500" height="300"/>
                 </a>
-            </section>
+            </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 columns">
-            <section>
+        <div class="col-md-6">
+            <div class="menuLink">
                 <a asp-controller="Donate" asp-action="GoodsIndex">
-                    <div class="image"><img src="/images/" alt="Goods pic" width="500" height="300" /></div>
-                    <h3 class="title">Donate Goods</h3>
-                    @*@Html.DisplayFor(model => model.DonateTypes[2].Name)*@
+                    <div class="caption">
+                        <div class="caption-content">
+                            <h3>Donate Goods</h3>
+                        </div>
+                    </div>
+                    <img src="~/images/g1.png" alt="Goods pic" width="500" height="300"/>
                 </a>
-            </section>
+            </div>
         </div>
-        <div class="col-md-6 columns">
-            <section>
+        <div class="col-md-6 ">
+            <div class="menuLink">
                 <a asp-controller="Donate" asp-action="MedicalIndex">
-                    <div class="image"><img src="/images/" alt="Medical pic" width="500" height="300" /></div>
-                    <h3 class="title">Donate Medical</h3>
-                    @*@Html.DisplayFor(model => model.DonateTypes[3].Name)*@
+                    <div class="caption">
+                        <div class="caption-content">
+                            <h3>Donate Medical</h3>
+                        </div>
+                    </div>
+                    <img src="~/images/med2.jpg" alt="Medical pic" width="500" height="300"/>
                 </a>
-            </section>
+            </div>
         </div>
     </div>
 </div>

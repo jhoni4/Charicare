@@ -6,19 +6,26 @@
 
 }
 
-<h2>@ViewData["Title"]</h2>
-<p>@ViewData["Mssage"]</p>
-<ul>
-    <li>Furniture: couches, dressers, dining tables, chairs, bookcases, desks, coffee tables
-    <li>Appliances: refrigerators, freezers, microwaves</li>
-    <li>Housewares: plates, bowls, silverware, glassware, cooking utensils, pots and pans, TVs, lamps</li>
-    <li>Office Supplies and Computers</li>
-</ul>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h2>@ViewData["Title"]</h2>
+        <img src="~/images/g2.jpg" alt="Clothes" width="1100" />
+    </div>
+    <div class="panel-body">
+        <p>@ViewData["Message"]</p>
+        <ul>
+            <li>Furniture: couches, dressers, dining tables, chairs, bookcases, desks, coffee tables
+            <li>Appliances: refrigerators, freezers, microwaves</li>
+            <li>Housewares: plates, bowls, silverware, glassware, cooking utensils, pots and pans, TVs, lamps</li>
+            <li>Office Supplies and Computers</li>
+        </ul>
+    </div>
+</div>
 
 <h3>Please fillout this form</h3>
 <div class="well-sm">
     <form asp-controller="Donate" asp-action="GoodsCreate">
-        @{Html.RenderPartial("_UserForm");}
+        @{Html.RenderPartial("_DonateForm");}
     </form>
 </div>
 <a asp-action="Index">Back to List</a>

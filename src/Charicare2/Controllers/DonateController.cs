@@ -36,6 +36,11 @@ namespace Charicare2.Controllers
 
         public async Task<IActionResult> ClothesIndex()
         {
+            if (ActiveUser.Instance.User == null)
+            {
+                return RedirectToAction("UserIndex", "User");
+            }
+
             DonateClothesIndexViewModel model = new DonateClothesIndexViewModel(context);
 
             return View(model);
@@ -44,67 +49,32 @@ namespace Charicare2.Controllers
         //Creates Clothes Donation Form/Index
         public async Task<IActionResult> ClothesCreate(ClothCreateViewModel model)
         {
-            Donate d = new Donate();
-              if (context.User.Where(e => e.FullName == model.User.FullName && e.Email == model.User.Email).SingleOrDefault() != null)
-                {
-                    User u = new User();
-                     u = context.User.Where(e => e.FullName == model.User.FullName && e.Email == model.User.Email).SingleOrDefault();
-                d.DonateTypeId = 1;
-                d.Name = model.Donate.Name;
-                d.Note = model.Donate.Note;
-                d.Value = model.Donate.Value;
-                d.UserId = u.UserId;
-
-                var LastPerson = u.FullName;
-
-
-                context.Donate.Add(d);
-                context.SaveChanges();
-            }
-            else
+            if (!ModelState.IsValid)
             {
-                User u = new User();
-                u.FullName = model.User.FullName;
-                u.Email = model.User.Email;
-                u.Street = model.User.Street;
-                u.City = model.User.City;
-                u.State = model.User.State;
-                u.Telephone = model.User.Telephone;
+                return RedirectToAction("ClothesIndex", "Donate");
+            }
 
-                var LastPerson = u.FullName;
-                context.User.Add(u);
-                context.SaveChanges();
-
-                d.DonateTypeId = 1;
-                d.Name = model.Donate.Name;
-                d.Note = model.Donate.Note;
-                d.Value = model.Donate.Value;
-                d.UserId = context.User.Where(e => e.FullName == model.User.FullName && e.Email == model.User.Email).SingleOrDefault().UserId;
+            model.UserId = ActiveUser.Instance.User.UserId;
+            Donate d = new Donate();
+            d.DonateTypeId = 1;
+            d.Name = model.Donate.Name;
+            d.Note = model.Donate.Note;
+            d.Value = model.Donate.Value;
+            d.UserId = model.UserId;
 
                 context.Donate.Add(d);
+            try
+            {
                 context.SaveChanges();
+                return RedirectToAction("ThankYou", "Donate");
+            }
 
-            };
+            catch (DbUpdateException)
+            {
+                return RedirectToAction("ClothesIndex", "Donate");
+            }
 
-            context.SaveChanges();
-            return RedirectToAction("ThankYou", "Donate");
 
-
-            //if (!ModelState.IsValid)
-            //{
-            //    return RedirectToAction("ClothesIndex", "Donate");
-            //}
-
-            //try
-            //{
-            //    context.SaveChanges();
-            //    return RedirectToAction("Index", "Home");
-            //}
-
-            //catch (DbUpdateException)
-            //{
-            //    return RedirectToAction("ClothesIndex", "Donate");
-            //}
         }
 
         //Form Goods Donation Index
@@ -112,7 +82,7 @@ namespace Charicare2.Controllers
         {
             DonateGoodsIndexViewModel model = new DonateGoodsIndexViewModel(context);
 
-            return View(model);
+            return  View(model);
         }
 
         //Creates new Goods Donation 
@@ -313,7 +283,7 @@ namespace Charicare2.Controllers
 
         public IActionResult ThankYou(ClothCreateViewModel model)
         {
-            var Donator = model.LastPerson.SingleOrDefault();
+            model.Donator = ActiveUser.Instance.User.FullName;
 
             return View(model);
         }

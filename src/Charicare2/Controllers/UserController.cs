@@ -31,36 +31,41 @@ namespace Charicare2.Controllers
             return View(model);
         }
 
-        //public async Task<IActionResult> Create()
-        //{
-        //    var model = new UserFormViewModel();
-
-        //    return View(model);
-        //}
-
-        public async Task<IActionResult> CreateUser(User User)
+        [HttpPost]
+        public async Task<IActionResult> Create(UserFormViewModel model)
         {
-            //UserCreateViewModel model = new UserCreateViewModel(context);
-
-            if (!ModelState.IsValid)
+            if (context.User.Where(e => e.FullName == model.User.FullName && e.Email == model.User.Email).SingleOrDefault() != null)
             {
-                return RedirectToAction("Create", "User");
+                User u = new User();
+                u = context.User.Where(e => e.FullName == model.User.FullName && e.Email == model.User.Email).SingleOrDefault();
+
+                var LastPerson = u.FullName;
+
+                ActiveUser.Instance.User = u;
+
+                return RedirectToAction("ClothesIndex", "Donate");
             }
-
-            context.Add(User);
-
-            try
+            else
             {
+                User u = new User();
+                u.FullName = model.User.FullName;
+                u.Email = model.User.Email;
+                u.Street = model.User.Street;
+                u.City = model.User.City;
+                u.State = model.User.State;
+                u.Telephone = model.User.Telephone;
+
+                //var LastPerson = u.FullName;
+                context.User.Add(u);
                 context.SaveChanges();
+               
+            ActiveUser.Instance.User = u;
+            };
 
-                return RedirectToAction("Index", "Donate");
-            }
 
-            catch (DbUpdateException)
-            {
-                return RedirectToAction("Create", "User");
-            }
+            context.SaveChanges();
+            return RedirectToAction("ClothesIndex", "Donate");
         }
-
     }
+
 }
