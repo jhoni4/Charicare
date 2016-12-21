@@ -7,36 +7,71 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<p>Count of Clothes donners is = @Model.TotalCountOfClothesDonners</p>
-<p>Count of money donners is = @Model.TotalCountOfMoneyDonners</p>
-<p>Count of Goods donners is = @Model.TotalCountOfGoodsDonners</p>
-<p>Count of Medicals donners is = @Model.TotalCountOfMedicalDonners</p>
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>*@
+<div class="Dashboard">
+    <div class="panel panel-success row">
+        <div class="panel-heading">Dashboard1</div>
+        <div class="panel-body well">
+            <div class="col-md-6">
+                <img src="~/images/m3.png" width="200" height="200" />
+            </div>
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge">@Model.TotalCountOfClothesDonates</span>
+                        Count of Clothes Donates is
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.TotalCountOfMoneyDonates</span>
+                        Count of money Donates is
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.TotalCountOfGoodsDonates</span>
+                        Count of Goods Donates is
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.TotalCountOfMedicalDonates</span>
+                        Count of Medicals Donates is
+                    </li>
+                </ul>
+            </div>
+            <div class="alert alert-info">Total Amount of Money Donated is = @Model.TotalAmontOfMoney.</div>
+        </div>
+    </div>
 
-<p>Sum of Amount of Money Donated is = @Model.TotalAmontOfMoney.</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                <p>Lists of all donates</p>
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.donates)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.DonateId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.DonateId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.DonateId">Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+    <div class="row">
+        <div class="panel panel-success col-md-offset-6">
+            <div class="panel-heading">ChariCare Stat</div>
+            <div class="panel-body">
+                <p>For only $1.00 a day and elderly person can be given food, shelter, and other necessities for an entire month. Donate Now!</p>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <p>Lists of all donates</p>
+                        </th>
+                        <th>
+                            <p>Value</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.donates)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Value)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

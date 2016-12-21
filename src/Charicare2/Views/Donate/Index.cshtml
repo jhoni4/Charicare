@@ -5,7 +5,7 @@
     ViewData["Message"] = "Your donations to The ChariCare,  help transform lives! It is financial contributions that make it possible for The ChariCare Mission, Seniors helping Camp and hope to the homeless and poor in Ethiopia. ";
 }
 
-<div class="panel panel-default">
+@*<div class="panel panel-default">
     <div class="panel-heading">
         <h2>@ViewData["Title"]</h2>
         <img src="~/images/o7.jpg" alt="Clothes" width="1100" />
@@ -13,12 +13,13 @@
     <div class="panel-body">
         <p>@ViewData["Message"]</p>
     </div>
-</div>
+</div>*@
+<br />
 <div class="well ">
     <div class="row">
         <div class="col-md-6">
             <div class="menuLink">
-                <a asp-controller="Donate" asp-action="ClothesIndex">
+                <a asp-controller="User" asp-action="UserIndex" asp-route-id="1">
                     <div class="caption">
                         <div class="caption-content">
                             <h3>Donate Clothes</h3>
@@ -27,10 +28,10 @@
                     <img src="~/images/clothe1.jpg" alt="Clothes pic" width="500" height="300"/>
                 </a>
             </div>
-        </div>
+        </div>  
         <div class="col-md-6">
             <div class="menuLink">
-                <a asp-controller="Donate" asp-action="MoneyIndex">
+                <a asp-controller="User" asp-action="UserIndex" asp-route-id="2">
                     <div class="caption">
                         <div class="caption-content">
                             <h3>Donate Money</h3>
@@ -44,7 +45,7 @@
     <div class="row">
         <div class="col-md-6">
             <div class="menuLink">
-                <a asp-controller="Donate" asp-action="GoodsIndex">
+                <a asp-controller="User" asp-action="UserIndex" asp-route-id="3">
                     <div class="caption">
                         <div class="caption-content">
                             <h3>Donate Goods</h3>
@@ -56,7 +57,7 @@
         </div>
         <div class="col-md-6 ">
             <div class="menuLink">
-                <a asp-controller="Donate" asp-action="MedicalIndex">
+                <a asp-controller="User" asp-action="UserIndex" asp-route-id="4">
                     <div class="caption">
                         <div class="caption-content">
                             <h3>Donate Medical</h3>

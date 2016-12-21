@@ -16,6 +16,10 @@ namespace Charicare2.Models.AppViewModels
         public int TotalCountOfClothesDonners { get; internal set; }
         public int TotalCountOfGoodsDonners { get; internal set; }
         public int TotalCountOfMedicalDonners { get; internal set; }
+        public int TotalCountOfClothesDonates { get; internal set; }
+        public int TotalCountOfMoneyDonates { get; internal set; }
+        public int TotalCountOfGoodsDonates { get; internal set; }
+        public int TotalCountOfMedicalDonates { get; internal set; }
 
         public DashboardListViewModel() { }
         public DashboardListViewModel(ApplicationDbContext ctx) : base(ctx) { }

@@ -13,16 +13,20 @@ namespace Charicare2.Models.AppViewModels
 
         public Donate Donate { get; set; }
 
-        public BaseViewModel(ApplicationDbContext ctx)
-        {
-            context = ctx;
-        }
-
         public string LastPerson { get; set; }
         
         public string Donator { get; set; }
 
+        public int UserId { get; set; }
+
+        public int DonateTypeId { get; set; }
+
         public BaseViewModel() { }
+
+        public BaseViewModel(ApplicationDbContext ctx)
+        {
+            context = ctx;
+        }
 
         private ApplicationDbContext context;
     }

@@ -32,14 +32,22 @@ namespace Charicare2.Controllers
             model.donners = context.User.ToList();
 
             ////To get count of donners for earch donate type
-            var ClothDonationList = model.donates.Where(l => l.DonateTypeId == 1).ToList();
-            model.TotalCountOfClothesDonners = ClothDonationList.Count();
-            var MoneyDonationList = model.donates.Where(l => l.DonateTypeId == 2).ToList();
-            model.TotalCountOfMoneyDonners = MoneyDonationList.Count();
-            var GoodsDonationList = model.donates.Where(l => l.DonateTypeId == 3).ToList();
-            model.TotalCountOfGoodsDonners = GoodsDonationList.Count();
-            var MedicalDonationList = model.donates.Where(l => l.DonateTypeId == 4).ToList();
-            model.TotalCountOfMedicalDonners = MedicalDonationList.Count();
+            var ClothDonationList = model.donates
+                .Where(l => l.DonateTypeId == 1).ToList()
+                .OrderBy(c => c.Name);
+            model.TotalCountOfClothesDonates = ClothDonationList.Count();
+            var MoneyDonationList = model.donates
+                .Where(l => l.DonateTypeId == 2).ToList()
+                .OrderBy(c => c.Name);
+            model.TotalCountOfMoneyDonates = MoneyDonationList.Count();
+            var GoodsDonationList = model.donates
+                .Where(l => l.DonateTypeId == 3).ToList()
+                .OrderBy(c => c.Name);
+            model.TotalCountOfGoodsDonates = GoodsDonationList.Count();
+            var MedicalDonationList = model.donates
+                .Where(l => l.DonateTypeId == 4).ToList()
+                .OrderBy(c => c.Name);
+            model.TotalCountOfMedicalDonates = MedicalDonationList.Count();
 
             ////To get Total amount of money donated
             model.TotalAmontOfMoney = MoneyDonationList.Sum(x => x.Value);
@@ -49,15 +57,6 @@ namespace Charicare2.Controllers
             return View(model);
         }
 
-        //public async Task<IActionResult> Detail(int Id1, int Id2)
-        //{
-        //    var model = new DashboardListViewModel(context);
-        //    model.DonateTypes = await context.DonateType.ToListAsync();
-        //    var donates = context.Donate
-        //                    .Where(s => s.DonateTypeId == Id1);
-        //    var donners = context.User
-        //                    .Where(s => s.UserId == Id2);
-        //    return View(model);
-        //}
+        
     }
 }

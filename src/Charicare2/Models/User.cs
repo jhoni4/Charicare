@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Charicare2.Models
 {
@@ -30,5 +31,7 @@ namespace Charicare2.Models
         public string City { get; set; }
 
         public string State { get; set; }
+
     }
 }
+

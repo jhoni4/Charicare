@@ -1,6 +1,9 @@
 ﻿body {
-    padding-top: 50px;
     padding-bottom: 20px;
+    z-index: -2;
+    background-color:rgba(137, 159, 33, 0.56);
+    color:white;
+    padding-top: 70px; 
 }
 
 /* Wrapping element */
@@ -59,7 +62,7 @@ textarea {
     display: block;
 }
 .menuLink a .caption {
-  background-color: rgba(220, 174, 148, 0.70);
+  background-color: rgba(137, 159, 33, 0.56);
   position: absolute;
   border: 1px solid #151515;
   margin-bottom: 8px;
@@ -87,4 +90,48 @@ textarea {
      background-image:url("/images/ban22.jpg");
      background-repeat:no-repeat;
      background-size:cover;
+}
+.navbar {
+    background-color: #39870C; 
+    z-index:3;
+}
+.FormContainer, .Dashboard, .clothpage, GoodsPage, .MedicalPage, MoneyPage {
+    color: darkgreen;
+}
+
+.userForm {
+    background-color: #0c4f12;
+    color: white;
+}
+
+ .navbar-brand{
+    background: url("/images/senior-care-logo.png") no-repeat;
+    background-size:50px 50px;
+    margin:5px;
+}
+  
+.navbar-inverse .navbar-nav > li > a {  
+  color: #fff;  
+  font-family:Arial;  
+  font-size:15px;  
+   background-color:transparent;  
+}  
+  
+.navbar-inverse .navbar-nav > li > a:hover,  
+.navbar-inverse .navbar-nav > li > a:focus{  
+  color: black;      
+}
+
+.navbar {
+    position: fixed;
+    top: 2.6px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+.bannerTop {
+    position: relative;
+    z-index:-1;
+    width:100%;
 }

@@ -25,12 +25,11 @@ namespace Charicare2.Migrations
                     b.Property<string>("Name");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasAnnotation("MaxLength", 255);
 
                     b.Property<int>("UserId");
 
-                    b.Property<int>("Value");
+                    b.Property<double>("Value");
 
                     b.HasKey("DonateId");
 
@@ -58,7 +57,8 @@ namespace Charicare2.Migrations
 
                     b.Property<string>("City");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -68,7 +68,7 @@ namespace Charicare2.Migrations
 
                     b.Property<string>("Street");
 
-                    b.Property<int>("Telephone");
+                    b.Property<long>("Telephone");
 
                     b.HasKey("UserId");
 

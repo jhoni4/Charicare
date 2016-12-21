@@ -8,8 +8,8 @@ using Charicare2.Data;
 namespace Charicare2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161214221057_NEW2Migration")]
-    partial class NEW2Migration
+    [Migration("20161220015726_NEW1migration")]
+    partial class NEW1migration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,12 +26,11 @@ namespace Charicare2.Migrations
                     b.Property<string>("Name");
 
                     b.Property<string>("Note")
-                        .IsRequired()
                         .HasAnnotation("MaxLength", 255);
 
                     b.Property<int>("UserId");
 
-                    b.Property<int>("Value");
+                    b.Property<double>("Value");
 
                     b.HasKey("DonateId");
 
@@ -59,7 +58,8 @@ namespace Charicare2.Migrations
 
                     b.Property<string>("City");
 
-                    b.Property<string>("Email");
+                    b.Property<string>("Email")
+                        .IsRequired();
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -69,7 +69,7 @@ namespace Charicare2.Migrations
 
                     b.Property<string>("Street");
 
-                    b.Property<int>("Telephone");
+                    b.Property<long>("Telephone");
 
                     b.HasKey("UserId");
 

@@ -11,5 +11,6 @@ namespace Charicare2.Models.AppViewModels
         public MedicalCreateViewModel() { }
 
         public MedicalCreateViewModel(ApplicationDbContext ctx) : base(ctx) { }
+
     }
 }

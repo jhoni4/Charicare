@@ -11,5 +11,6 @@ namespace Charicare2.Models.AppViewModels
         public MoneyCreateViewModel() { }
 
         public MoneyCreateViewModel(ApplicationDbContext ctx) : base(ctx) { }
+
     }
 }

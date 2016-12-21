@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Charicare2.Models.AppViewModels
 {
-    public class ClothCreateViewModel : BaseViewModel
+    public class NewDonateCreateViewModel : BaseViewModel
     {
         public int DonateTypeId { get; set; }
 
         public int UserId { get; set; }
 
-        public ClothCreateViewModel() { }
+        public NewDonateCreateViewModel() { }
 
-        public ClothCreateViewModel(ApplicationDbContext ctx) : base(ctx) { }
+        public NewDonateCreateViewModel(ApplicationDbContext ctx) : base(ctx) { }
 
     }
 }

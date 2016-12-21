@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Charicare2.Migrations
 {
-    public partial class NEW2Migration : Migration
+    public partial class NEW1migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,9 +16,9 @@ namespace Charicare2.Migrations
                         .Annotation("Autoincrement", true),
                     DonateTypeId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(nullable: true),
-                    Note = table.Column<string>(maxLength: 255, nullable: false),
+                    Note = table.Column<string>(maxLength: 255, nullable: true),
                     UserId = table.Column<int>(nullable: false),
-                    Value = table.Column<int>(nullable: false)
+                    Value = table.Column<double>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -46,11 +46,11 @@ namespace Charicare2.Migrations
                     UserId = table.Column<int>(nullable: false)
                         .Annotation("Autoincrement", true),
                     City = table.Column<string>(nullable: true),
-                    Email = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: false),
                     FullName = table.Column<string>(maxLength: 55, nullable: false),
                     State = table.Column<string>(nullable: true),
                     Street = table.Column<string>(nullable: true),
-                    Telephone = table.Column<int>(nullable: false)
+                    Telephone = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {

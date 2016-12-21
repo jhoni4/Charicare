@@ -7,21 +7,27 @@ Linens: We are always in need of bath towels, face cloths, twin - size sheets an
     Hygiene Items: We are always in need of soap, deodorant, toothbrushes, toothpaste, shaving cream and razors. Travel size is preferred.";
 }
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h2>@ViewData["Title"]</h2>
-        <img src="~/images/c3.jpg" alt="Clothes" width="1100"/>
+<div class="clothpage">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>@ViewData["Title"]</h2>
+            <img src="~/images/c3.jpg" alt="Clothes" width="1100" />
+        </div>
+        <div class="panel-body">
+            <p>@ViewData["Message"]</p>
+        </div>
     </div>
-    <div class="panel-body">
-        <p>@ViewData["Message"]</p>
-    </div>
-</div>
 
 
-<h3>Please fillout this form</h3>
-<div class="well-sm">  
-    <form asp-controller="Donate" asp-action="ClothesCreate">
-        @Html.Partial("_DonateForm")
-    </form>
+    <div class="col-md-6 panel panel-success">
+        <div class="panel-heading">Please Fillout This Form</div>
+        <div class="userForm">
+            <div class="well-lg">
+                <form asp-controller="Donate" asp-action="DonateCreate">
+                    @Html.Partial("_DonateForm")
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-<a asp-action="Index">Back to List</a>
+  <a asp-action="Index">Back to Home</a>

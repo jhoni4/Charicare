@@ -25,6 +25,5 @@ namespace Charicare2.Data
         public DbSet<User> User { get; set; }
         public DbSet<DonateType> DonateType { get; set; }
         public DbSet<Donate> Donate { get; set; }
-
     }
 }

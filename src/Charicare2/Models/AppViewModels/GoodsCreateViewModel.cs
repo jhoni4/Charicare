@@ -11,5 +11,6 @@ namespace Charicare2.Models.AppViewModels
         public GoodsCreateViewModel() { }
 
         public GoodsCreateViewModel(ApplicationDbContext ctx) : base(ctx) { }
+
     }
 }

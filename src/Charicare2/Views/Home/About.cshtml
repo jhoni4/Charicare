@@ -1,25 +1,29 @@
 ﻿@{
     ViewData["Title"] = "About";
 }
-<h2>@ViewData["Title"].</h2>
-<h3>@ViewData["Message"]</h3>
-
-
-
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h2>@ViewData["Title"]</h2>
-        <img src="~/images/o8.jpg" alt="Clothes" width="1100" />
-    </div>
-    <div class="panel-body row">
-        <div>
-            <img src="~/images/o2.jpg" alt="Clothes" width="500"/>
-            <img src="~/images/o3.jpg" alt="Clothes"width="500" />
-            <img src="~/images/o4.jpg" alt="Clothes" width="500"/>
-            <img src="~/images/o5.jpg" alt="Clothes" width="500"/>
-        </div>
-        <div>
+<br />
+<div class="aboutContainer" >
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h2>@ViewData["Title"]</h2>
+            <img src="~/images/o8.jpg" alt="Clothes" width="1100" />
             <p>@ViewData["Message"]</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/images/o2.jpg" alt="Clothes" width="400" />
+        </div>
+        <div class="col-md-offset-6">
+            <img src="~/images/o3.jpg" alt="Clothes" width="400" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/images/o5.jpg" alt="Clothes" width="400" />
+        </div>
+        <div col-md-offset-6">
+            <img src="~/images/o6.jpg" alt="Clothes" width="400" />
         </div>
     </div>
 </div>

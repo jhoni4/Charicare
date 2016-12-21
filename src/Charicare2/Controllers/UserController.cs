@@ -7,6 +7,7 @@ using Charicare2.Data;
 using Charicare2.Models.AppViewModels;
 using Charicare2.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Charicare2.Controllers
 {
@@ -24,26 +25,54 @@ namespace Charicare2.Controllers
         }
 
         //// GET: Donate
-        public async Task<IActionResult> UserIndex()
+        public IActionResult UserIndex([FromRoute]int Id)
         {
-            var model = new UserFormViewModel();
+            ActiveUser.Instance.User = null;
+            ActiveUser.Instance.DonateTypeId = 0;
+            UserFormViewModel model = new UserFormViewModel();
 
-            return View(model);
+            if (ActiveUser.Instance.User == null)
+            {
+                model.DonateTypeId = Id;
+                return View(model);
+            }
+
+            model.UserId =  ActiveUser.Instance.User.UserId;
+            return RedirectToAction("Index", "Donate");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(UserFormViewModel model)
+        public async Task<IActionResult> UserCreate(UserFormViewModel model, [FromRoute]int Id)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             if (context.User.Where(e => e.FullName == model.User.FullName && e.Email == model.User.Email).SingleOrDefault() != null)
             {
                 User u = new User();
-                u = context.User.Where(e => e.FullName == model.User.FullName && e.Email == model.User.Email).SingleOrDefault();
+                u = await context.User.Where(e => e.FullName == model.User.FullName && e.Email == model.User.Email).SingleOrDefaultAsync();
+                model.DonateTypeId = Id;
 
                 var LastPerson = u.FullName;
-
                 ActiveUser.Instance.User = u;
+                ActiveUser.Instance.DonateTypeId = Id;
 
-                return RedirectToAction("ClothesIndex", "Donate");
+                switch (ActiveUser.Instance.DonateTypeId)
+                {
+                    case 1:
+                        return RedirectToAction("ClothesIndex", "Donate");
+                    case 2:
+                        return RedirectToAction("MoneyIndex", "Donate");
+                    case 3:
+                        return RedirectToAction("GoodsIndex", "Donate");
+                    case 4:
+                        return RedirectToAction("MedicalIndex", "Donate");
+                    default:
+                        Console.WriteLine("Default case");
+                        break;
+                }
             }
             else
             {
@@ -54,18 +83,42 @@ namespace Charicare2.Controllers
                 u.City = model.User.City;
                 u.State = model.User.State;
                 u.Telephone = model.User.Telephone;
+                model.DonateTypeId = Id;
 
-                //var LastPerson = u.FullName;
                 context.User.Add(u);
                 context.SaveChanges();
                
-            ActiveUser.Instance.User = u;
-            };
+                ActiveUser.Instance.User = u;
+                ActiveUser.Instance.DonateTypeId = Id;
 
+                switch (ActiveUser.Instance.DonateTypeId)
+                {
+                    case 1:
+                        return RedirectToAction("ClothesIndex", "Donate");
+                    case 2:
+                        return RedirectToAction("MoneyIndex", "Donate");
+                    case 3:
+                        return RedirectToAction("GoodsIndex", "Donate");
+                    case 4:
+                        return RedirectToAction("MedicalIndex", "Donate");
+                    default:
+                        Console.WriteLine("Default case");
+                        break;
+                }
+            }
 
-            context.SaveChanges();
-            return RedirectToAction("ClothesIndex", "Donate");
+            try
+            {
+                context.SaveChanges();
+                return RedirectToAction("UserIndex", "User");
+            }
+
+            catch (DbUpdateException)
+            {
+                return RedirectToAction("UserIndex", "User");
+            }
         }
+
     }
 
 }
