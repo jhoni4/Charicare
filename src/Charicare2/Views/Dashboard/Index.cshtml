@@ -1,21 +1,17 @@
 ﻿@model Charicare2.Models.AppViewModels.DashboardListViewModel
 
-
 @{
     ViewData["Title"] = "Dashboard";
 }
 
-<h2>@ViewData["Title"]</h2>
 
-@*<p>
-        <a asp-action="Create">Create New</a>
-    </p>*@
-<div class="Dashboard">
+
+<div class="Dashboard dashboardPage">
     <div class="panel panel-success row">
-        <div class="panel-heading">Dashboard1</div>
+        <div class="panel-heading" style="text-align:center;"><b>Dashboard</b></div>
         <div class="panel-body well">
             <div class="col-md-6">
-                <img src="~/images/m3.png" width="200" height="200" />
+                <img src="~/images/a-motto.png" width="200" height="200" />
             </div>
             <div class="col-md-6">
                 <ul class="list-group">
@@ -37,10 +33,9 @@
                     </li>
                 </ul>
             </div>
-            <div class="alert alert-info">Total Amount of Money Donated is = @Model.TotalAmontOfMoney.</div>
+            <div class="alert alert-success">Total Amount of Money Donated is = @Model.TotalAmontOfMoney.</div>
         </div>
     </div>
-
     <div class="row">
         <div class="panel panel-success col-md-offset-6">
             <div class="panel-heading">ChariCare Stat</div>
@@ -54,7 +49,7 @@
                             <p>Lists of all donates</p>
                         </th>
                         <th>
-                            <p>Value</p>
+                            <p>Value in $</p>
                         </th>
                     </tr>
                 </thead>
@@ -75,3 +70,6 @@
         </div>
     </div>
 </div>
+@*<div style="text-align:center">
+    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+</div>*@ 

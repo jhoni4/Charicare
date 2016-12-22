@@ -8,20 +8,25 @@
 <div class="MedicalPage">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h2>@ViewData["Title"]</h2>
+            @*<h2>@ViewData["Title"]</h2>*@
             <img src="~/images/med4.jpg" alt="Medical" width="1100" />
         </div>
         <div class="panel-body">
             <p>@ViewData["Message"]</p>
         </div>
     </div>
-
-    <hr />
-    <h3>Please fillout this form</h3>
-    <div class="well-sm">
-        <form asp-controller="Donate" asp-action="DonateCreate">
-            @{Html.RenderPartial("_DonateForm");}
-        </form>
+    <div class="panel panel-success">
+        <div class="userForm panel-body row">
+            <div>Please Fillout This Form</div>
+            <div class="col-md-7">
+                <form asp-controller="Donate" asp-action="DonateCreate">
+                    @{Html.RenderPartial("_DonateForm");}
+                </form>
+            </div>
+            <div class="col-md-4">
+                <img src="~/images/med2.jpg" alt="med pic" width="400" />
+            </div>
+        </div>
     </div>
 </div>
     <a asp-action="Index">Back to List</a>

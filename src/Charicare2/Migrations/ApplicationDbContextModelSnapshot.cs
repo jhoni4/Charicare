@@ -20,9 +20,15 @@ namespace Charicare2.Migrations
                     b.Property<int>("DonateId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("DateCreated")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
+
                     b.Property<int>("DonateTypeId");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 55);
 
                     b.Property<string>("Note")
                         .HasAnnotation("MaxLength", 255);

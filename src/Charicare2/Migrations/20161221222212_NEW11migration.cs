@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Charicare2.Migrations
 {
-    public partial class NEW1migration : Migration
+    public partial class NEW11migration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,8 +14,9 @@ namespace Charicare2.Migrations
                 {
                     DonateId = table.Column<int>(nullable: false)
                         .Annotation("Autoincrement", true),
+                    DateCreated = table.Column<DateTime>(nullable: false, defaultValueSql: "strftime('%Y-%m-%d %H:%M:%S')"),
                     DonateTypeId = table.Column<int>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(maxLength: 55, nullable: false),
                     Note = table.Column<string>(maxLength: 255, nullable: true),
                     UserId = table.Column<int>(nullable: false),
                     Value = table.Column<double>(nullable: false)

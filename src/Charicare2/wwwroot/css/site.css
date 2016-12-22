@@ -1,8 +1,8 @@
 ﻿body {
     padding-bottom: 20px;
-    z-index: -2;
+    /*z-index: -2;*/
     background-color:rgba(137, 159, 33, 0.56);
-    color:white;
+    /*color:white;*/
     padding-top: 70px; 
 }
 
@@ -20,11 +20,7 @@ textarea {
     max-width: 280px;
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
-}
+
 
 /* buttons and links extension to use brackets: [ click me ] */
 .btn-bracketed::before {
@@ -95,8 +91,19 @@ textarea {
     background-color: #39870C; 
     z-index:3;
 }
-.FormContainer, .Dashboard, .clothpage, GoodsPage, .MedicalPage, MoneyPage {
+.clothpage, .GoodsPage, .MedicalPage, MoneyPage {
+    z-index:2;
+}
+.FormContainer{
+    background-color: rgba(57, 155, 12, 0.19);
+}
+.jumbotron {
+    margin-top:150px;
+}
+
+.Dashboard, .clothpage, .GoodsPage, .MedicalPage, MoneyPage, .homeContainer, .aboutContainer, .dashboardPage, .thankyouContainer, .FormContainer {
     color: darkgreen;
+    margin-top:200px;
 }
 
 .userForm {
@@ -104,11 +111,11 @@ textarea {
     color: white;
 }
 
- .navbar-brand{
+ /*.navbar-brand{
     background: url("/images/senior-care-logo.png") no-repeat;
-    background-size:50px 50px;
-    margin:5px;
-}
+    background-size: 40px 40px;
+    margin:1px;
+}*/
   
 .navbar-inverse .navbar-nav > li > a {  
   color: #fff;  
@@ -131,7 +138,8 @@ textarea {
     box-shadow: 0 1px 3px rgba(0,0,0,.2);
 }
 .bannerTop {
-    position: relative;
+    position: fixed;
     z-index:-1;
     width:100%;
+    padding-bottom:200px;
 }

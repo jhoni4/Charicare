@@ -28,7 +28,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"></a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"> <img src="~/images/senior-care-logo.png" style="width: 50px; height:50px;" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -65,6 +65,7 @@
     <environment names="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
     <environment names="Staging,Production">
@@ -77,6 +78,7 @@
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
     </environment>
 
     @RenderSection("scripts", required: false)

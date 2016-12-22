@@ -8,7 +8,7 @@ using Charicare2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Charicare2.Models;
-using Newtonsoft.Json.Linq;
+
 
 namespace Charicare2.Controllers
 {
@@ -23,6 +23,7 @@ namespace Charicare2.Controllers
         {
             context = ctx;
         }
+
 
         public IActionResult Index()
         {
@@ -57,6 +58,5 @@ namespace Charicare2.Controllers
             return View(model);
         }
 
-        
     }
 }
