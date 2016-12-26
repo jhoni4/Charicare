@@ -1,8 +1,6 @@
 ﻿body {
     padding-bottom: 20px;
-    /*z-index: -2;*/
-    background-color:rgba(137, 159, 33, 0.56);
-    /*color:white;*/
+    background-color:rgba(160, 185, 41, 0.30);
     padding-top: 70px; 
 }
 
@@ -18,26 +16,6 @@ input,
 select,
 textarea {
     max-width: 280px;
-}
-
-
-
-/* buttons and links extension to use brackets: [ click me ] */
-.btn-bracketed::before {
-    display:inline-block;
-    content: "[";
-    padding-right: 0.5em;
-}
-.btn-bracketed::after {
-    display:inline-block;
-    content: "]";
-    padding-left: 0.5em;
-}
-
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"]
-{
-    width: 100%;
 }
 
 /* Hide/rearrange for smaller screens */
@@ -110,12 +88,6 @@ textarea {
     background-color: #0c4f12;
     color: white;
 }
-
- /*.navbar-brand{
-    background: url("/images/senior-care-logo.png") no-repeat;
-    background-size: 40px 40px;
-    margin:1px;
-}*/
   
 .navbar-inverse .navbar-nav > li > a {  
   color: #fff;  

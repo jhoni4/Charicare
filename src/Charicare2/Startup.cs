@@ -11,7 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Charicare2.Data;
 using Charicare2.Models;
-using Charicare2.Services;
 
 namespace Charicare2
 {
