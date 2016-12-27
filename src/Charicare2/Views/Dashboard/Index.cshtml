@@ -2,8 +2,11 @@
 @using FusionCharts.Charts
 
 @{  
-    var imagePath = @"images\m2.png";
-    ViewData["pic1"] = "http://kzookids.com/wp-content/uploads/2015/12/untitled.png";
+    ViewData["pic1"] = @"/images/c50.png";
+    ViewData["pic2"] = @"/images/g50.png";
+    ViewData["pic3"] = @"/images/m50.png";
+    ViewData["pic4"] = @"/images/med50.png";
+    ViewData["back"] = @"/images/senior-care-logo.png";
 
 }
 @{
@@ -30,47 +33,47 @@
                         "showborder": "0",
                         "divlinealpha": "25",
                         "canvasbasecolor": "#C8C8C8",
-                        "bgimage": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/BMW.svg/2000px-BMW.svg.png",
+                        "bgimage": "@ViewData["back"]",
                         "bgimagealpha": "15",
                         "bgimagedisplaymode": "stretch",
-                        "palettecolors": "#1559CF"
+                        "palettecolors": "#39870C"
                     },
                     "annotations": {
-                        "autoscale": "0",
+                        "autoscale": "1",
                         "scaleimages": "1",
-                        "origw": "400",
-                        "origh": "300",
+                        "origw": "30",
+                        "origh": "30",
                         "groups": [
                             {
                                 "id": "user-images",
                                 "items": [
                                     {
-                                        "id": "Batman-icon",
+                                        "id": "pic1-icon",
                                         "type": "image",
                                         "url": "@ViewData["pic1"]",
-                                        "x": "$dataset.0.set.0.CenterX - 25.5",
-                                        "y": "$dataset.0.set.0.EndY + 5"
+                                        "x": "$dataset.0.set.0.CenterX - 35.5",
+                                        "y": "$dataset.0.set.0.EndY + 37"
                                     },
                                     {
-                                        "id": "Thor-icon",
+                                        "id": "pic2-icon",
                                         "type": "image",
-                                        "url": "url(@ViewData["pic1"])",
-                                        "x": "$dataset.0.set.1.CenterX - 25.5",
-                                        "y": "$dataset.0.set.1.EndY + 5"
+                                        "url": "@ViewData["pic2"]",
+                                        "x": "$dataset.0.set.1.CenterX - 35.5",
+                                        "y": "$dataset.0.set.1.EndY + 37"
                                     },
                                     {
-                                        "id": "IronMan-icon",
+                                        "id": "pic3-icon",
                                         "type": "image",
-                                        "url": "http://kzookids.com/wp-content/uploads/2015/12/untitled.png",
-                                        "x": "$dataset.0.set.2.CenterX - 25.5",
-                                        "y": "$dataset.0.set.2.EndY + 5"
+                                        "url": "@ViewData["pic3"]",
+                                        "x": "$dataset.0.set.2.CenterX - 30.5",
+                                        "y": "$dataset.0.set.2.EndY + 37"
                                     },
                                     {
-                                        "id": "SuperMan-icon",
+                                        "id": "pic4-icon",
                                         "type": "image",
-                                        "url": "http://static.fusioncharts.com/sampledata/annotaions/superman.png",
-                                        "x": "$dataset.0.set.3.CenterX - 25.5",
-                                        "y": "$dataset.0.set.3.EndY + 5"
+                                        "url": "@ViewData["pic4"]",
+                                        "x": "$dataset.0.set.3.CenterX - 30.5",
+                                        "y": "$dataset.0.set.3.EndY + 37"
                                     }
                                 ]
                             }
@@ -103,10 +106,9 @@
 }
 
 <div class="Dashboard dashboardPage">
-    <div><img src='@imagePath' width="50" height="50"/></div>
     <div class="panel panel-success row">
         <div class="panel-heading" style="text-align:center;"><b>Dashboard</b></div>
-        <div class="panel-body well">
+        <div class="panel-body">
             <div class="col-md-6">
                 <img src="~/images/a-motto.png" width="200" height="200" />
             </div>
@@ -134,12 +136,36 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-5" style="text-align:center">
-            <div ID="chart-container"></div>
-            <p>Cloth Total Value : $@Model.ClothTotalValue</p>
-            <p>Goods Total Value : $@Model.GoodsTotalValue</p>
-            <p>Money Total Value : $@Model.MoneyTotalValue</p>
-            <p>Medical Total Value : $@Model.MedicalTotalValue</p>
+        <div class="col-md-6">
+            <div ID="chart-container"></div><br />
+            <div class="well well-sm">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name of donates</th>
+                            <th>Value in $</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Value of Cloths :</td>
+                            <td>$@Model.ClothTotalValue</td>
+                         </tr>
+                        <tr>
+                            <td>Total Value of Goods:</td>
+                            <td>$@Model.GoodsTotalValue</td>
+                        </tr>
+                        <tr>
+                            <td>Total Value of Money:</td>
+                            <td>$@Model.MoneyTotalValue</td>
+                        </tr>
+                        <tr>
+                            <td>Total Value of Medicals:</td>
+                            <td>$@Model.MedicalTotalValue</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="panel panel-success col-md-offset-6">
             <div class="panel-heading" style="text-align:center;"><b>ChariCare Stat</b></div>
