@@ -1,0 +1,200 @@
+﻿@model Charicare2.Models.AppViewModels.DashboardListViewModel
+@using FusionCharts.Charts
+
+@{  
+    ViewData["pic1"] = @"/images/c50.png";
+    ViewData["pic2"] = @"/images/g50.png";
+    ViewData["pic3"] = @"/images/m50.png";
+    ViewData["pic4"] = @"/images/med50.png";
+    ViewData["back"] = @"/images/senior-care-logo.png";
+
+}
+@{
+    <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.js"></script>
+    <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.maps.js"></script>
+    <script type="text/javascript">
+        FusionCharts.ready(function () {
+            var fusioncharts = new FusionCharts({
+                type: 'column3d',
+                renderAt: 'chart-container',
+                width: '500',
+                height: '300',
+                dataFormat: 'json',
+                dataSource: {
+                    "chart": {
+                        "caption": "Dashboard ",
+                        "subCaption": "Donate Type vs Thier Total Value",
+                        "xAxisName": "Donate Type Name",
+                        "yAxisName": "Value (In USD)",
+                        "numberPrefix": "$",
+                        "aligncaptionwithcanvas": "0",
+                        "numberprefix": "$",
+                        "canvasbgalpha": "0",
+                        "showborder": "0",
+                        "divlinealpha": "25",
+                        "canvasbasecolor": "#C8C8C8",
+                        "bgimage": "@ViewData["back"]",
+                        "bgimagealpha": "15",
+                        "bgimagedisplaymode": "stretch",
+                        "palettecolors": "#39870C"
+                    },
+                    "annotations": {
+                        "autoscale": "1",
+                        "scaleimages": "1",
+                        "origw": "30",
+                        "origh": "30",
+                        "groups": [
+                            {
+                                "id": "user-images",
+                                "items": [
+                                    {
+                                        "id": "pic1-icon",
+                                        "type": "image",
+                                        "url": "@ViewData["pic1"]",
+                                        "x": "$dataset.0.set.0.CenterX - 35.5",
+                                        "y": "$dataset.0.set.0.EndY + 37"
+                                    },
+                                    {
+                                        "id": "pic2-icon",
+                                        "type": "image",
+                                        "url": "@ViewData["pic2"]",
+                                        "x": "$dataset.0.set.1.CenterX - 35.5",
+                                        "y": "$dataset.0.set.1.EndY + 37"
+                                    },
+                                    {
+                                        "id": "pic3-icon",
+                                        "type": "image",
+                                        "url": "@ViewData["pic3"]",
+                                        "x": "$dataset.0.set.2.CenterX - 30.5",
+                                        "y": "$dataset.0.set.2.EndY + 37"
+                                    },
+                                    {
+                                        "id": "pic4-icon",
+                                        "type": "image",
+                                        "url": "@ViewData["pic4"]",
+                                        "x": "$dataset.0.set.3.CenterX - 30.5",
+                                        "y": "$dataset.0.set.3.EndY + 37"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+
+                    "data": [
+                      {
+                          "label": "Clothes",
+                          "value": "@Model.ClothTotalValue"
+                      },
+                      {
+                          "label": "Goods",
+                          "value": "@Model.GoodsTotalValue"
+                      },
+                      {
+                          "label": "Money",
+                          "value": "@Model.MoneyTotalValue"
+                      },
+                      {
+                          "label": "Medical",
+                          "value": "@Model.MedicalTotalValue"
+                      }]
+                }
+            }
+        );
+            fusioncharts.render();
+        });
+    </script>
+}
+
+<div class="Dashboard dashboardPage">
+    <div class="panel panel-success row">
+        <div class="panel-heading" style="text-align:center;"><b>Dashboard</b></div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <img src="~/images/a-motto.png" width="200" height="200" />
+            </div>
+            <div class="col-md-6">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class="badge">@Model.TotalCountOfClothesDonates</span>
+                        Count of Clothes Donates is
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.TotalCountOfMoneyDonates</span>
+                        Count of money Donates is
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.TotalCountOfGoodsDonates</span>
+                        Count of Goods Donates is
+                    </li>
+                    <li class="list-group-item">
+                        <span class="badge">@Model.TotalCountOfMedicalDonates</span>
+                        Count of Medicals Donates is
+                    </li>
+                </ul>
+            </div>
+            <div class="alert alert-success">Total Amount of Money Donated is = @Model.TotalAmontOfMoney.</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div ID="chart-container"></div><br />
+            <div class="well well-sm">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name of donates</th>
+                            <th>Value in $</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Total Value of Cloths :</td>
+                            <td>$@Model.ClothTotalValue</td>
+                         </tr>
+                        <tr>
+                            <td>Total Value of Goods:</td>
+                            <td>$@Model.GoodsTotalValue</td>
+                        </tr>
+                        <tr>
+                            <td>Total Value of Money:</td>
+                            <td>$@Model.MoneyTotalValue</td>
+                        </tr>
+                        <tr>
+                            <td>Total Value of Medicals:</td>
+                            <td>$@Model.MedicalTotalValue</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-success col-md-offset-6">
+            <div class="panel-heading" style="text-align:center;"><b>ChariCare Stat</b></div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            <p>Lists of all donates</p>
+                        </th>
+                        <th>
+                            <p>Value in $</p>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.donates)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Value)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

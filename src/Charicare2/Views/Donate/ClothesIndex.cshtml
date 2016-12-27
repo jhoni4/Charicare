@@ -1,0 +1,33 @@
+@model Charicare2.Models.AppViewModels.DonateClothesIndexViewModel
+
+@{
+    ViewData["Title"] = "Donate Clothes";
+    ViewData["Message"] = @"Clothes accepted
+Linens: We are always in need of bath towels, face cloths, twin - size sheets and blankets, standard - size pillows and pillowcases, and sleeping bags.
+    Hygiene Items: We are always in need of soap, deodorant, toothbrushes, toothpaste, shaving cream and razors. Travel size is preferred.";
+}
+
+<div class="clothpage">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            @*<h2>@ViewData["Title"]</h2>*@
+            <img src="~/images/cloth.jpg" alt="Clothes" width="1100" />
+        </div>
+        <div class="panel-body">
+            <p>@ViewData["Message"]</p>
+        </div>
+    </div>
+    <div class="panel panel-success">
+        <div class="userForm panel-body row">
+            <div>Please Fillout This Form</div>
+            <div class="col-md-7">
+                <form asp-controller="Donate" asp-action="DonateCreate">
+                    @Html.Partial("_DonateForm")
+                </form>
+            </div>
+            <div class="col-md-4">
+                <img src="~/images/c4.jpg" alt="clothes pic" width="400" />
+            </div>
+        </div>
+    </div>
+    <a asp-action="Index">Back to Home</a>

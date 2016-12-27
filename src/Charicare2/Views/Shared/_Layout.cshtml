@@ -8,6 +8,7 @@
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://checkout.stripe.com/v3/checkout/button.css"/>
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -18,7 +19,8 @@
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="bannerTop"><img src="~/images/banner00.png" alt="banner" /></div>
+    <div class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -27,15 +29,29 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Charicare2</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand"> <img src="~/images/senior-care-logo.png" style="width: 50px; height:50px;" /></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Donate</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About us</a></li>
+                    <li><a asp-area="" asp-controller="Donate" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="About">About Us</a></li>
+                    <li class="nav-pills dropdown" role="presentation">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            Donate <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="User" asp-action="UserIndex" asp-route-id="1">Clothes</a></li>
+                            <li><a asp-area="" asp-controller="User" asp-action="UserIndex" asp-route-id="2">Money</a></li>
+                            <li><a asp-area="" asp-controller="User" asp-action="UserIndex" asp-route-id="3">Goods</a></li>
+                            <li><a asp-area="" asp-controller="User" asp-action="UserIndex" asp-route-id="4">Medical</a></li>
+                        </ul>
+                    </li>
                 </ul>
-                @await Html.PartialAsync("_LoginPartial")
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact Us</a></li>
+                    <li><a asp-area="" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+                </ul>
+                @*@await Html.PartialAsync("_LoginPartial")*@
             </div>
         </div>
     </div>
@@ -43,15 +59,17 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2016 - Charicare2</p>
+            <p>&copy; 2016 - Charicare</p>
         </footer>
     </div>
 
     <environment names="Development">
+        <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.js"></script>
+        <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.maps.js"></script>
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
+     </environment>
     <environment names="Staging,Production">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
@@ -61,6 +79,8 @@
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
+        <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.js"></script>
+        <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.maps.js"></script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 

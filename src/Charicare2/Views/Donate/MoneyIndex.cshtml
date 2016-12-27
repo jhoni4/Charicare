@@ -1,0 +1,67 @@
+﻿@model Charicare2.Models.AppViewModels.DonateMoneyIndexViewModel
+
+@{
+    ViewData["Title"] = "Donate Money";
+    ViewData["Mssage"] = "Your donations to The ChariCare,  help transform lives! It is financial contributions that make it possible for The Bowery Mission, Mont Lawn Camp and Mont Lawn City Camp to provide help and hope to the homeless and poor in Nashville City. ";
+    <link rel="stylesheet" href="https://checkout.stripe.com/v3/checkout/button.css" />
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+    paypal.Button.render({
+
+        env: 'production', // Specify 'sandbox' for the test environment
+
+        payment: function() {
+            // Set up the payment here, when the buyer clicks on the button
+        },
+
+        onAuthorize: function(data, actions) {
+            // Execute the payment here, when the buyer approves the transaction
+       }
+
+    }, '#paypal-button');
+    </script>
+    
+}
+
+<div class="MoneyPage">
+    <!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/bdg_now_accepting_pp_2line_w.png" border="0" alt="Now Accepting PayPal"></a><div style="text-align:center"><a href="https://www.paypal.com/webapps/mpp/how-paypal-works"><font size="2" face="Arial" color="#0079CD">How PayPal Works</font></a></div></td></tr></table><!-- PayPal Logo -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <img src="~/images/m4.jpg" alt="Money pic" width="1100" />
+        </div>
+        <div class="panel-body">
+            <p>@ViewData["Message"]</p>
+        </div>
+    </div>
+    <div class="panel panel-success">
+        <div class="userForm panel-body row">
+        <div>Please Fillout This Form</div>
+            <div class="col-md-8">
+                <form asp-controller="Donate" asp-action="DonateCreate">
+                    @{Html.RenderPartial("_DonateForm");}
+                </form>
+                <div class="row">
+                    <div class="col-md-3">
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                            <input type="hidden" name="cmd" value="_s-xclick">
+                            <input type="hidden" name="hosted_button_id" value="RZAQBNQZQDMBE">
+                            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                    </div>
+                    <div class="col-md-3">
+                        <button id="customButton" class="stripe-button-el">
+                            <span style="display: block; min-height: 30px;">Pay with strip</span>
+                        </button>
+                    </div>  
+                </div>
+                 <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppppcmcvdam.png" alt="Pay with PayPal, PayPal Credit or any major credit card" />
+            </div>
+            <div class="col-md-3">
+                <img src="~/images/m2.png" alt="Money pic" width="300" />
+            </div>
+        </div>
+    </div>
+</div>
+<a asp-action="Index">Back to List</a>
