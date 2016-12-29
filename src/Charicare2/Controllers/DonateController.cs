@@ -63,6 +63,11 @@ namespace Charicare2.Controllers
             return View(model);
         }
 
+        public IActionResult Charge()
+        {
+            return View();
+        }
+
         //Form MEDICAL Donation Form/Index
         public IActionResult MedicalIndex()
         {
@@ -93,6 +98,10 @@ namespace Charicare2.Controllers
         }
 
         //Creates NEW DONATION for all types of donation
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> DonateCreate(NewDonateCreateViewModel model, [FromRoute] int Id)
         {
             if (!ModelState.IsValid)

@@ -8,8 +8,6 @@
     ViewData["pic4"] = @"/images/med50.png";
     ViewData["back"] = @"/images/senior-care-logo.png";
 
-}
-@{
     <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.js"></script>
     <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.maps.js"></script>
     <script type="text/javascript">
@@ -104,38 +102,39 @@
         });
     </script>
 }
-
 <div class="Dashboard dashboardPage">
-    <div class="panel panel-success row">
-        <div class="panel-heading" style="text-align:center;"><b>Dashboard</b></div>
-        <div class="panel-body">
-            <div class="col-md-6">
-                <img src="~/images/a-motto.png" width="200" height="200" />
+    <div class="parallax1">
+        <div class="panel panel-success row">  
+            <div class="panel-heading" style="text-align:center;"><b>Dashboard</b></div>
+            <div class="panel-body">
+                <div class="col-md-6">
+                    <img src="~/images/a-motto.png" width="200" height="200" />
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <span class="badge">@Model.TotalCountOfClothesDonates</span>
+                            Count of Clothes Donates is
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@Model.TotalCountOfMoneyDonates</span>
+                            Count of money Donates is
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@Model.TotalCountOfGoodsDonates</span>
+                            Count of Goods Donates is
+                        </li>
+                        <li class="list-group-item">
+                            <span class="badge">@Model.TotalCountOfMedicalDonates</span>
+                            Count of Medicals Donates is
+                        </li>
+                    </ul>
+                </div>
+                <div class="alert alert-success">Total Amount of Money Donated is = @Model.TotalAmontOfMoney.</div>
             </div>
-            <div class="col-md-6">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <span class="badge">@Model.TotalCountOfClothesDonates</span>
-                        Count of Clothes Donates is
-                    </li>
-                    <li class="list-group-item">
-                        <span class="badge">@Model.TotalCountOfMoneyDonates</span>
-                        Count of money Donates is
-                    </li>
-                    <li class="list-group-item">
-                        <span class="badge">@Model.TotalCountOfGoodsDonates</span>
-                        Count of Goods Donates is
-                    </li>
-                    <li class="list-group-item">
-                        <span class="badge">@Model.TotalCountOfMedicalDonates</span>
-                        Count of Medicals Donates is
-                    </li>
-                </ul>
-            </div>
-            <div class="alert alert-success">Total Amount of Money Donated is = @Model.TotalAmontOfMoney.</div>
         </div>
     </div>
-    <div class="row">
+    <div class="row parallax1">
         <div class="col-md-6">
             <div ID="chart-container"></div><br />
             <div class="well well-sm">
@@ -148,40 +147,45 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Total Value of Cloths :</td>
+                            <td>Total Values from Cloths donations :</td>
                             <td>$@Model.ClothTotalValue</td>
                          </tr>
                         <tr>
-                            <td>Total Value of Goods:</td>
+                            <td>Total Values from Goods donations:</td>
                             <td>$@Model.GoodsTotalValue</td>
                         </tr>
                         <tr>
-                            <td>Total Value of Money:</td>
+                            <td>Total Values v Money donations:</td>
                             <td>$@Model.MoneyTotalValue</td>
                         </tr>
                         <tr>
-                            <td>Total Value of Medicals:</td>
+                            <td>Total Values from Medicals donations:</td>
                             <td>$@Model.MedicalTotalValue</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+        
         <div class="panel panel-success col-md-offset-6">
             <div class="panel-heading" style="text-align:center;"><b>ChariCare Stat</b></div>
             <table class="table">
                 <thead>
                     <tr>
                         <th>
-                            <p>Lists of all donates</p>
+                            @Html.ActionLink("donates Name", "Index", new { sortOrder = ViewBag.NameSortParm })
                         </th>
                         <th>
-                            <p>Value in $</p>
+                            @Html.ActionLink("Value in $", "Index", new { sortOrder = ViewBag.ValueSortParm })
                         </th>
+                        <th>
+                            @Html.ActionLink("DateCreated", "Index", new { sortOrder = ViewBag.DateSortParm })
+                        </th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.donates)
+                    @foreach (var item in Model.donatesss)
                     {
                         <tr>
                             <td>
@@ -189,6 +193,14 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Value)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateCreated)
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.DonateId">Edit</a> |
+                                <a asp-action="Details" asp-route-id="@item.DonateId">Details</a> |
+                                <a asp-action="Delete" asp-route-id="@item.DonateId">Delete</a>
                             </td>
                         </tr>
                     }

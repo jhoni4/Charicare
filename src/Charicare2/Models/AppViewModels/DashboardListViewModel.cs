@@ -9,6 +9,7 @@ namespace Charicare2.Models.AppViewModels
 {
     public class DashboardListViewModel : BaseViewModel
     {
+        internal IQueryable<Donate> donatess;
 
         public double ClothTotalValue { get; set; }
         public double GoodsTotalValue { get; set; }
@@ -27,6 +28,8 @@ namespace Charicare2.Models.AppViewModels
         public int TotalCountOfGoodsDonates { get; internal set; }
         public int TotalCountOfMedicalDonates { get; internal set; }
         public Chart Chart { get; set; }
+        public List<Donate> donatesss { get; internal set; }
+
         public DashboardListViewModel() { }
         public DashboardListViewModel(ApplicationDbContext ctx) : base(ctx) { }
     }

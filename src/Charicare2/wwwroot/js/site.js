@@ -1,54 +1,15 @@
 ﻿
 //// Write your Javascript code.
 
-  //FusionCharts.ready(function(){
-  //    var fusioncharts = new FusionCharts({
-  //        type: 'column3d',
-  //        renderAt: 'chart-container',
-  //        width: '500',
-  //        height: '300',
-  //        dataFormat: 'json',
-  //        dataSource: {
-  //            "chart": {
-  //                "caption": "Dashboard ",
-  //                "subCaption": "Donate Type vs Thier Total Value",
-  //                "xAxisName": "Donate Name",
-  //                "yAxisName": "Value (In USD)",
-  //                "numberPrefix": "$",
-  //                "theme": "fint"
-  //            },
+//var tx;
 
-  //            "data": [
-  //              {
-  //                  "label": "Clothes",
-  //                  "value": "${value1}"
-  //              },
-  //              {
-  //                  "label": "Goods",
-  //                  "value": "@Model.ClothTotalValue"
-  //              },
-  //              {
-  //                  "label": "Money",
-  //                  "value": "${@Model.ClothTotalValue}"
-  //              },
-  //              {
-  //                  "label": "Medical",
-  //                  "value": "${ClothTotalValue}"
-  //              }]
-  //        }
-  //    }
-  //);
-  //    fusioncharts.render();
-  //});
-  //chartContainer.Text = sales.Render();
-
-  //tx.executeSql('SELECT * FROM Donate', [], function (tx, results) {
-  //    var len = results.rows.length;
-  //    for (var i = 0; i < len; ++i) {
-  //        var obj = results.rows.item(i);
-  //        alert(obj);
-  //    }
-  //});
+//  tx.executeSql('SELECT * FROM Donate', [], function (tx, results) {
+//      var len = results.rows.length;
+//      for (var i = 0; i < len; ++i) {
+//          var obj = results.rows.item(i);
+//          Console.Writeline("Hello", obj);
+//      }
+//  });
 /////////
   //SearchFactory.getFavoriteFromFb()
   // .then((favObj) => {
