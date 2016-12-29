@@ -81,10 +81,7 @@ namespace Charicare2.Controllers
                 .Where(l => l.DonateTypeId == 4).Sum(d => d.Value);
             model.MedicalTotalValue = MedicalTotalValue;
 
-            //Select sum(d.Value) 
-            //from Donate d
-            //where d.DonateTypeId = 2
-            //group by DonateTypeId
+            
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.ValueSortParm = sortOrder == "Value" ? "value_desc" : "Value";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
