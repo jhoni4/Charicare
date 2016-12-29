@@ -37,10 +37,10 @@ namespace Charicare2.Controllers
         //Form CLOTHES Donation form/Index 
         public IActionResult ClothesIndex()
         {
-            //creates new user first then new clothes donation
-            if (ActiveUser.Instance.User == null)
+            //creates new Customer first then new clothes donation
+            if (ActiveUser.Instance.Customer == null)
             {
-                return RedirectToAction("UserIndex", "User");
+                return RedirectToAction("CustomerIndex", "Customer");
             }
 
              DonateClothesIndexViewModel model = new DonateClothesIndexViewModel();
@@ -52,9 +52,9 @@ namespace Charicare2.Controllers
         //Form MONEY Donation Form/Index
         public IActionResult MoneyIndex()
         {
-            if (ActiveUser.Instance.User == null)
+            if (ActiveUser.Instance.Customer == null)
             {
-                return RedirectToAction("UserIndex", "User");
+                return RedirectToAction("CustomerIndex", "Customer");
             }
 
             DonateMoneyIndexViewModel model = new DonateMoneyIndexViewModel();
@@ -71,9 +71,9 @@ namespace Charicare2.Controllers
         //Form MEDICAL Donation Form/Index
         public IActionResult MedicalIndex()
         {
-            if (ActiveUser.Instance.User == null)
+            if (ActiveUser.Instance.Customer == null)
             {
-                return RedirectToAction("UserIndex", "User");
+                return RedirectToAction("CustomerIndex", "Customer");
             }
 
             DonateMedicalIndexViewModel model = new DonateMedicalIndexViewModel();
@@ -85,10 +85,10 @@ namespace Charicare2.Controllers
         ////Form GOODS Donation Index
         public IActionResult GoodsIndex()
         {
-            if (ActiveUser.Instance.User == null)
+            if (ActiveUser.Instance.Customer == null)
             {
 
-                return RedirectToAction("UserIndex", "User");
+                return RedirectToAction("CustomerIndex", "Customer");
             }
 
             DonateGoodsIndexViewModel model = new DonateGoodsIndexViewModel();
@@ -109,13 +109,13 @@ namespace Charicare2.Controllers
                 return BadRequest(ModelState);
             }
 
-            model.UserId = ActiveUser.Instance.User.UserId;
+            model.CustomerId = ActiveUser.Instance.Customer.CustomerId;
             Donate d = new Donate();
             d.DonateTypeId = ActiveUser.Instance.DonateTypeId;
             d.Name = model.Donate.Name;
             d.Note = model.Donate.Note;
             d.Value = model.Donate.Value;
-            d.UserId = model.UserId;
+            d.CustomerId = model.CustomerId;
 
             context.Donate.Add(d);
             try
@@ -134,7 +134,7 @@ namespace Charicare2.Controllers
 
         public IActionResult ThankYou(NewDonateCreateViewModel model)
         {
-            model.Donator = ActiveUser.Instance.User.FullName;
+            model.Donator = ActiveUser.Instance.Customer.FullName;
             return View(model);
         }
 

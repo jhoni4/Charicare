@@ -16,7 +16,7 @@ namespace Charicare2.Models.AppViewModels
         public double MoneyTotalValue { get; set; }
         public double MedicalTotalValue { get; set; }
         public List<Donate> donates { get; set; }
-        public List<User> donners { get; set; }
+        public List<Customer> donners { get; set; }
         public List<DonateType> DonateTypes { get; set; }
         public double TotalAmontOfMoney{ get; set; }
         public int TotalCountOfMoneyDonners { get; internal set; }

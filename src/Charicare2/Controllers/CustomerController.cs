@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Charicare2.Controllers
 {
-    public class UserController : Controller
+    public class CustomerController : Controller
     {
 
         private ApplicationDbContext context;
@@ -19,44 +19,44 @@ namespace Charicare2.Controllers
         //Constructor functions that takes context 
         //and sets them to the private variables above
 
-        public UserController(ApplicationDbContext ctx)
+        public CustomerController(ApplicationDbContext ctx)
         {
             context = ctx;
         }
 
         //// GET: Donate
-        public IActionResult UserIndex([FromRoute]int Id)
+        public IActionResult CustomerIndex([FromRoute]int Id)
         {
-            ActiveUser.Instance.User = null;
+            ActiveUser.Instance.Customer = null;
             ActiveUser.Instance.DonateTypeId = 0;
-            UserFormViewModel model = new UserFormViewModel();
+            CustomerFormViewModel model = new CustomerFormViewModel();
 
-            if (ActiveUser.Instance.User == null)
+            if (ActiveUser.Instance.Customer == null)
             {
                 model.DonateTypeId = Id;
                 return View(model);
             }
 
-            model.UserId =  ActiveUser.Instance.User.UserId;
+            model.CustomerId =  ActiveUser.Instance.Customer.CustomerId;
             return RedirectToAction("Index", "Donate");
         }
 
         [HttpPost]
-        public async Task<IActionResult> UserCreate(UserFormViewModel model, [FromRoute]int Id)
+        public async Task<IActionResult> CustomerCreate(CustomerFormViewModel model, [FromRoute]int Id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (context.User.Where(e => e.FullName == model.User.FullName && e.Email == model.User.Email).SingleOrDefault() != null)
+            if (context.Customer.Where(e => e.FullName == model.Customer.FullName && e.Email == model.Customer.Email).SingleOrDefault() != null)
             {
-                User u = new User();
-                u = await context.User.Where(e => e.FullName == model.User.FullName && e.Email == model.User.Email).SingleOrDefaultAsync();
+                Customer u = new Customer();
+                u = await context.Customer.Where(e => e.FullName == model.Customer.FullName && e.Email == model.Customer.Email).SingleOrDefaultAsync();
                 model.DonateTypeId = Id;
 
                 var LastPerson = u.FullName;
-                ActiveUser.Instance.User = u;
+                ActiveUser.Instance.Customer = u;
                 ActiveUser.Instance.DonateTypeId = Id;
 
                 switch (ActiveUser.Instance.DonateTypeId)
@@ -76,19 +76,19 @@ namespace Charicare2.Controllers
             }
             else
             {
-                User u = new User();
-                u.FullName = model.User.FullName;
-                u.Email = model.User.Email;
-                u.Street = model.User.Street;
-                u.City = model.User.City;
-                u.State = model.User.State;
-                u.Telephone = model.User.Telephone;
+                Customer u = new Customer();
+                u.FullName = model.Customer.FullName;
+                u.Email = model.Customer.Email;
+                u.Street = model.Customer.Street;
+                u.City = model.Customer.City;
+                u.State = model.Customer.State;
+                u.Telephone = model.Customer.Telephone;
                 model.DonateTypeId = Id;
 
-                context.User.Add(u);
+                context.Customer.Add(u);
                 context.SaveChanges();
                
-                ActiveUser.Instance.User = u;
+                ActiveUser.Instance.Customer = u;
                 ActiveUser.Instance.DonateTypeId = Id;
 
                 switch (ActiveUser.Instance.DonateTypeId)
@@ -110,12 +110,12 @@ namespace Charicare2.Controllers
             try
             {
                 context.SaveChanges();
-                return RedirectToAction("UserIndex", "User");
+                return RedirectToAction("CustomerIndex", "Customer");
             }
 
             catch (DbUpdateException)
             {
-                return RedirectToAction("UserIndex", "User");
+                return RedirectToAction("CustomerIndex", "Customer");
             }
         }
 

@@ -8,8 +8,9 @@ using Charicare2.Models;
 
 namespace Charicare2.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
@@ -19,11 +20,15 @@ namespace Charicare2.Data
         {
             base.OnModelCreating(builder);
 
+            builder.Entity<ApplicationUser>() //Use your application user class here
+                .ToTable("AspNetUsers");
+
             builder.Entity<Donate>()
                 .Property(b => b.DateCreated)
                 .HasDefaultValueSql("strftime('%Y-%m-%d %H:%M:%S')");
         }
-        public DbSet<User> User { get; set; }
+        public DbSet<ApplicationUser> User { get; set; }
+        public DbSet<Customer> Customer { get; set; }
         public DbSet<DonateType> DonateType { get; set; }
         public DbSet<Donate> Donate { get; set; }
 

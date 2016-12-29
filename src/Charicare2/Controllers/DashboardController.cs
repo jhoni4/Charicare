@@ -46,7 +46,7 @@ namespace Charicare2.Controllers
             DashboardListViewModel model = new DashboardListViewModel(context);
             model.DonateTypes = context.DonateType.ToList();
             model.donates = context.Donate.ToList();
-            model.donners = context.User.ToList();
+            model.donners = context.Customer.ToList();
 
             ////To get count of donners for each donate 
             var ClothDonationList = model.donates

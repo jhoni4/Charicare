@@ -21,7 +21,7 @@ namespace Charicare2.Models
         [DisplayFormat(DataFormatString = "{0:C}")]
         public double Value { get; set; }
 
-        public int UserId { get; set; }
+        public int CustomerId { get; set; }
 
         public int DonateTypeId { get; set; }
 

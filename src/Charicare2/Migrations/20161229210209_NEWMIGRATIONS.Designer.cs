@@ -8,18 +8,45 @@ using Charicare2.Data;
 namespace Charicare2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161221222212_NEW11migration")]
-    partial class NEW11migration
+    [Migration("20161229210209_NEWMIGRATIONS")]
+    partial class NEWMIGRATIONS
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1");
 
+            modelBuilder.Entity("Charicare2.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("City");
+
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 55);
+
+                    b.Property<string>("State");
+
+                    b.Property<string>("Street");
+
+                    b.Property<long>("Telephone");
+
+                    b.HasKey("CustomerId");
+
+                    b.ToTable("Customer");
+                });
+
             modelBuilder.Entity("Charicare2.Models.Donate", b =>
                 {
                     b.Property<int>("DonateId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CustomerId");
 
                     b.Property<DateTime>("DateCreated")
                         .ValueGeneratedOnAdd()
@@ -33,8 +60,6 @@ namespace Charicare2.Migrations
 
                     b.Property<string>("Note")
                         .HasAnnotation("MaxLength", 255);
-
-                    b.Property<int>("UserId");
 
                     b.Property<double>("Value");
 
@@ -55,31 +80,6 @@ namespace Charicare2.Migrations
                     b.HasKey("DonateTypeId");
 
                     b.ToTable("DonateType");
-                });
-
-            modelBuilder.Entity("Charicare2.Models.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("Email")
-                        .IsRequired();
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasAnnotation("MaxLength", 55);
-
-                    b.Property<string>("State");
-
-                    b.Property<string>("Street");
-
-                    b.Property<long>("Telephone");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("User");
                 });
         }
     }

@@ -49,6 +49,10 @@ namespace Charicare2
             Console.WriteLine($"connection = {connection}");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connection));
 
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
             services.AddMvc();
 
          
@@ -76,6 +80,8 @@ namespace Charicare2
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+
+            app.UseIdentity();
 
             // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
             DbInitializer.Initialize(app.ApplicationServices);

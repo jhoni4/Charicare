@@ -1,59 +1,59 @@
-﻿@model Charicare2.Models.AppViewModels.UserFormViewModel
+﻿@model Charicare2.Models.AppViewModels.CustomerFormViewModel
 
 @{
-    ViewData["Title"] = "User sign in form";
+    ViewData["Title"] = "Customer sign in form";
 }
 
 
 <div class="row FormContainer">
     <div class="col-md-6 panel panel-success">
         <div class="panel-heading">Please Fillout This Form Before You Begin Donating</div>
-        <div class="userForm"> 
-                <form id="clearBtn" asp-controller="User" asp-action="UserCreate" asp-route-id="@Model.DonateTypeId" method="post" class="form-horizontal">
+        <div class="CustomerForm"> 
+                <form id="clearBtn" asp-controller="Customer" asp-action="CustomerCreate" asp-route-id="@Model.DonateTypeId" method="post" class="form-horizontal">
                     <div asp-validation-summary="All" class="text-danger"></div>
                     <div class="form-horizontal">
                         <hr />
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                         <div class="form-group">
-                            <label asp-for="@Model.User.FullName" class="col-md-2 control-label"></label>
+                            <label asp-for="@Model.Customer.FullName" class="col-md-2 control-label"></label>
                             <div class="col-md-5">
-                                <input asp-for="@Model.User.FullName" class="form-control" />
-                                <span asp-validation-for="@Model.User.FullName" class="text-danger" />
+                                <input asp-for="@Model.Customer.FullName" class="form-control" />
+                                <span asp-validation-for="@Model.Customer.FullName" class="text-danger" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label asp-for="@Model.User.Email" class="col-md-2 control-label"></label>
+                            <label asp-for="@Model.Customer.Email" class="col-md-2 control-label"></label>
                             <div class="col-md-5">
-                                <input asp-for="@Model.User.Email" class="form-control" />
-                                <span asp-validation-for="@Model.User.Email" class="text-danger" />
+                                <input asp-for="@Model.Customer.Email" class="form-control" />
+                                <span asp-validation-for="@Model.Customer.Email" class="text-danger" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label asp-for="@Model.User.Telephone" class="col-md-2 control-label">Phone Number</label>
+                            <label asp-for="@Model.Customer.Telephone" class="col-md-2 control-label">Phone Number</label>
                             <div class="col-md-5">
-                                <input asp-for="@Model.User.Telephone" class="form-control" />
-                                <span asp-validation-for="@Model.User.Telephone" class="text-danger" />
+                                <input asp-for="@Model.Customer.Telephone" class="form-control" />
+                                <span asp-validation-for="@Model.Customer.Telephone" class="text-danger" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label asp-for="@Model.User.Street" class="col-md-2 control-label"></label>
+                            <label asp-for="@Model.Customer.Street" class="col-md-2 control-label"></label>
                             <div class="col-md-5">
-                                <input asp-for="@Model.User.Street" class="form-control" />
-                                <span asp-validation-for="@Model.User.Street" class="text-danger" />
+                                <input asp-for="@Model.Customer.Street" class="form-control" />
+                                <span asp-validation-for="@Model.Customer.Street" class="text-danger" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label asp-for="@Model.User.City" class="col-md-2 control-label"></label>
+                            <label asp-for="@Model.Customer.City" class="col-md-2 control-label"></label>
                             <div class="col-md-5">
-                                <input asp-for="@Model.User.City" class="form-control" />
-                                <span asp-validation-for="@Model.User.City" class="text-danger" />
+                                <input asp-for="@Model.Customer.City" class="form-control" />
+                                <span asp-validation-for="@Model.Customer.City" class="text-danger" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <label asp-for="@Model.User.State" class="col-md-2 control-label"></label>
+                            <label asp-for="@Model.Customer.State" class="col-md-2 control-label"></label>
                             <div class="col-md-5">
-                                @Html.DropDownListFor(x => x.User.State, Charicare2.Data.Extentions.GetStatesList(), new { @name = "User.State", @class = "form-control control-label" })
-                                <span asp-validation-for="@Model.User.State" class="text-danger" />
+                                @Html.DropDownListFor(x => x.Customer.State, Charicare2.Data.Extentions.GetStatesList(), new { @name = "Customer.State", @class = "form-control control-label" })
+                                <span asp-validation-for="@Model.Customer.State" class="text-danger" />
                             </div>
                         </div>
                         <div class="form-group">

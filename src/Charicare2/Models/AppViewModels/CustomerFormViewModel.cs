@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Charicare2.Models.AppViewModels
 {
-    public class UserFormViewModel : BaseViewModel
+    public class CustomerFormViewModel : BaseViewModel
     {
         public string FullName { get; set; }
 
@@ -23,9 +23,9 @@ namespace Charicare2.Models.AppViewModels
 
         public List<SelectListItem> StateId { get; set; }
 
-        public UserFormViewModel()  { }
+        public CustomerFormViewModel()  { }
 
-        public UserFormViewModel(ApplicationDbContext ctx) : base(ctx)
+        public CustomerFormViewModel(ApplicationDbContext ctx) : base(ctx)
         {
         }
     }

@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Charicare2.Models
 {
-    // Add profile data for application users by adding properties to the ApplicationUser class
-    public class User 
+    // Add profile data for application Customers by adding properties to the ApplicationCustomer class
+    public class Customer 
     {
         [Key]
-        public int UserId { get; set; }
+        public int CustomerId { get; set; }
 
         [Required]
         [StringLength(55)]
