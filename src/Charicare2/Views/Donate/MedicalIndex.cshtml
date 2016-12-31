@@ -5,18 +5,16 @@
     ViewData["Mssage"] = "Your donations to The ChariCare,  help transform lives! It is financial contributions that make it possible for The Bowery Mission, Mont Lawn Camp and Mont Lawn City Camp to provide help and hope to the homeless and poor in Nashville City. ";
 }
 
-<div class="MedicalPage">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            @*<h2>@ViewData["Title"]</h2>*@
-            <img src="~/images/med4.jpg" alt="Medical" width="1100" />
-        </div>
-        <div class="panel-body">
-            <p>@ViewData["Message"]</p>
-        </div>
+<div id="MedicalPage">
+    <div>
+        <img src="~/images/med4.jpg" alt="Medical" width="1200" />
+    </div>
+    <div class="panel-body">
+        <p>@ViewData["Message"]</p>
     </div>
     <div class="panel panel-success">
-        <div class="userForm panel-body row">
+        <div class="CustomerForm panel-body row">
+            @*<h2>@ViewData["Title"]</h2>*@
             <div>Please Fillout This Form</div>
             <div class="col-md-7">
                 <form asp-controller="Donate" asp-action="DonateCreate">
@@ -29,4 +27,4 @@
         </div>
     </div>
 </div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to Home</a>

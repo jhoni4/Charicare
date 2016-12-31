@@ -1,0 +1,82 @@
+﻿@model Charicare2.Models.AppViewModels.CustomerFormViewModel
+
+@{
+    ViewData["Title"] = "Donor information";
+}
+
+
+<div class="row FormContainer">
+    <div class="col-md-6 panel panel-success">
+        <div class="panel-heading" style="background-color:black; color:chartreuse;">
+            <h3>@ViewData["Title"]</h3>
+            <h5>Please Fillout This Form Before You Begin Donating</h5>
+        </div>
+        <div class="CustomerForm"> 
+                <form id="clearBtn" asp-controller="Customer" asp-action="CustomerCreate" asp-route-id="@Model.DonateTypeId" method="post" class="form-horizontal">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                    <div class="form-horizontal">
+                        <hr />
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Customer.FullName" class="col-md-2 control-label"></label>
+                            <div class="col-md-5">
+                                <input asp-for="@Model.Customer.FullName" class="form-control" />
+                                <span asp-validation-for="@Model.Customer.FullName" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Customer.Email" class="col-md-2 control-label"></label>
+                            <div class="col-md-5">
+                                <input asp-for="@Model.Customer.Email" class="form-control" />
+                                <span asp-validation-for="@Model.Customer.Email" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Customer.Telephone" class="col-md-2 control-label">Phone Number</label>
+                            <div class="col-md-5">
+                                <input asp-for="@Model.Customer.Telephone" class="form-control" />
+                                <span asp-validation-for="@Model.Customer.Telephone" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Customer.Street" class="col-md-2 control-label"></label>
+                            <div class="col-md-5">
+                                <input asp-for="@Model.Customer.Street" class="form-control" />
+                                <span asp-validation-for="@Model.Customer.Street" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Customer.City" class="col-md-2 control-label"></label>
+                            <div class="col-md-5">
+                                <input asp-for="@Model.Customer.City" class="form-control" />
+                                <span asp-validation-for="@Model.Customer.City" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="@Model.Customer.State" class="col-md-2 control-label"></label>
+                            <div class="col-md-5">
+                                @Html.DropDownListFor(x => x.Customer.State, Charicare2.Data.Extentions.GetStatesList(), new { @name = "Customer.State", @class = "form-control control-label" })
+                                <span asp-validation-for="@Model.Customer.State" class="text-danger" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-5">
+                                <input type="submit" value="Submit" class="btn btn-primary" onclick="document.clearBtn.reset();" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <div class="col-lg-6">
+        <div>
+            <img src="~/images/old11.jpg" alt="old lady" height="600" />
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
+

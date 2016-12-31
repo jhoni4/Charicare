@@ -9,7 +9,7 @@ namespace Charicare2.Models.AppViewModels
 {
     public class BaseViewModel
     {
-        public User User { get; set; }
+        public Customer Customer { get; set; }
 
         public Donate Donate { get; set; }
 
@@ -17,7 +17,7 @@ namespace Charicare2.Models.AppViewModels
         
         public string Donator { get; set; }
 
-        public int UserId { get; set; }
+        public int CustomerId { get; set; }
 
         public int DonateTypeId { get; set; }
 

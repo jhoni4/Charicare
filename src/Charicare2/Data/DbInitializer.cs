@@ -54,84 +54,84 @@ namespace Charicare2.Data
                   new Donate {
                       Name = "Clothes",
                       Note = "contact me in person",
-                      UserId = 3,
+                      CustomerId = 3,
                       DonateTypeId = 1,
                       Value = 160
                   },
                   new Donate {
                       Name = "Pillow",
                       Note = "contact me in person",
-                      UserId = 2,
+                      CustomerId = 2,
                       DonateTypeId = 1,
                       Value = 120
                   },
                   new Donate {
                       Name = "Blankets",
                       Note = "contact me in person",
-                      UserId = 4,
+                      CustomerId = 4,
                       DonateTypeId = 1,
                       Value = 150
                   },
                   new Donate {
                       Name = "Vitamine B12",
                       Note = "contact me in person",
-                      UserId = 1,
+                      CustomerId = 1,
                       DonateTypeId = 4,
                       Value = 110
                   },
                   new Donate {
                       Name = "Advil",
                       Note = "contact me in person",
-                      UserId = 2,
+                      CustomerId = 2,
                       DonateTypeId = 4,
                       Value = 120
                   },
                   new Donate {
                       Name = "Sanitaizer",
                       Note = "contact me in person",
-                      UserId = 4,
+                      CustomerId = 4,
                       DonateTypeId = 4,
                       Value = 210
                   },
                   new Donate {
                       Name = "Cash",
                       Note = "contact me in person",
-                      UserId = 2,
+                      CustomerId = 2,
                       DonateTypeId = 2,
                       Value = 200
                   },
                   new Donate {
                       Name = "Cash",
                       Note = "contact me in person",
-                      UserId = 3,
+                      CustomerId = 3,
                       DonateTypeId = 2,
                       Value = 100
                   },
                   new Donate {
                       Name = "Cash",
                       Note = "contact me in person",
-                      UserId = 2,
+                      CustomerId = 2,
                       DonateTypeId = 2,
                       Value = 50
                   },
                   new Donate {
                       Name = "Computer",
                       Note = "contact me in person",
-                      UserId = 3,
+                      CustomerId = 3,
                       DonateTypeId = 3,
                       Value = 2000
                   },
                   new Donate {
                       Name = "Tooth Brushs",
                       Note = "contact me in person",
-                      UserId = 2,
+                      CustomerId = 2,
                       DonateTypeId = 3,
                       Value = 610
                   },
                   new Donate {
                       Name = "Books",
                       Note = "contact me in person",
-                      UserId = 4,
+                      CustomerId = 4,
                       DonateTypeId = 3,
                       Value = 210
                   }
@@ -142,10 +142,10 @@ namespace Charicare2.Data
                 }
                 context.SaveChanges();
 
-                // 3  User.  - Seeding the database.
-                var Users = new User[]
+                // 3  Customer.  - Seeding the database.
+                var Customers = new Customer[]
                 {
-                  new User {
+                  new Customer {
                       FullName = "Micheal Brown",
                       Street = "600 penselvenia ave",
                       State = "DC",
@@ -153,7 +153,7 @@ namespace Charicare2.Data
                       Email = "Boby@gmail.com",
                       Telephone = 555-287-2516
                   },
-                  new User {
+                  new Customer {
                       FullName = "James Douglas",
                       Street = "300 infinity st",
                       State = "TN",
@@ -161,7 +161,7 @@ namespace Charicare2.Data
                       Email = "James@gmail.com",
                       Telephone = 555-237-2416
                   },
-                  new User {
+                  new Customer {
                       FullName = "Sandra Miller",
                       Street = "27 Beverly hills ave",
                       State = "CA",
@@ -169,7 +169,7 @@ namespace Charicare2.Data
                       Email = "Sandray@gmail.com",
                       Telephone = 555-087-2396
                   },
-                  new User {
+                  new Customer {
                       FullName = "John Doe",
                       Street = "500 Interstate blvd",
                       State = "TN",
@@ -178,9 +178,9 @@ namespace Charicare2.Data
                       Telephone = 555-347-2522
                   }
                 };
-                foreach (User i in Users)
+                foreach (Customer i in Customers)
                 {
-                    context.User.Add(i);
+                    context.Customer.Add(i);
                 }
                 context.SaveChanges();
             }

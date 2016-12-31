@@ -1,0 +1,70 @@
+@model Charicare2.Models.Donate
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<br /><br /><br /><br /><br /><br /><br /><br /><br />
+<div class="CustomerForm">
+<h2>Edit</h2>
+    <form asp-action="Edit">
+        <div class="form-horizontal">
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="DonateId" />
+            <div class="form-group">
+                <label asp-for="DateCreated" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="DateCreated" class="form-control" />
+                    <span asp-validation-for="DateCreated" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="DonateTypeId" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="DonateTypeId" class="form-control" />
+                    <span asp-validation-for="DonateTypeId" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Note" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Note" class="form-control" />
+                    <span asp-validation-for="Note" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerId" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="CustomerId" class="form-control" />
+                    <span asp-validation-for="CustomerId" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Value" class="col-md-2 control-label"></label>
+                <div class="col-md-10">
+                    <input asp-for="Value" class="form-control" />
+                    <span asp-validation-for="Value" class="text-danger" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

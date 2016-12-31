@@ -28,7 +28,7 @@ namespace Charicare2.Data
         public int DonateTypeId { get; set; }
 
         // To track the currently active customer - selected by user
-        public User User { get; set; }
+        public Customer Customer { get; set; }
     }
 }
 
