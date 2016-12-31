@@ -7,15 +7,12 @@ using System.Data;
 using System.Collections;
 using System.Configuration;
 using FusionCharts.Charts;
-using System.Web;
-using System.Web.Security;
-using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
-using System.Web.UI.WebControls.WebParts;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Charicare2.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 
 namespace Charicare2.Controllers
 {
@@ -129,8 +126,10 @@ namespace Charicare2.Controllers
 
             return View(donate);
         }
+        
 
         // GET: Donate/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -150,8 +149,9 @@ namespace Charicare2.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DonateId,Name,Value,Note,DonateTypeId,DateCreated,UserId")] Donate donate)
+        public async Task<IActionResult> Edit(int id, [Bind("DonateId,Name,Value,Note,DonateTypeId,DateCreated,CustomerId")] Donate donate)
         {
             if (id != donate.DonateId)
             {
@@ -182,6 +182,7 @@ namespace Charicare2.Controllers
         }
 
         // GET: Donate/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -200,6 +201,7 @@ namespace Charicare2.Controllers
 
         // POST: Donate/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

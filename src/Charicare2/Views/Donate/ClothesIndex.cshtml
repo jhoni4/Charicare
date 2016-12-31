@@ -7,18 +7,18 @@ Linens: We are always in need of bath towels, face cloths, twin - size sheets an
     Hygiene Items: We are always in need of soap, deodorant, toothbrushes, toothpaste, shaving cream and razors. Travel size is preferred.";
 }
 
-<div class="clothpage">
+<div id="clothpage">
     <div class="panel panel-default">
-        <div class="panel-heading">
-            @*<h2>@ViewData["Title"]</h2>*@
-            <img src="~/images/cloth.jpg" alt="Clothes" width="1100" />
+        <div class="panel-heading" style="background-color:black; color:chartreuse;">
+            <h2>@ViewData["Title"]</h2>
         </div>
+            <img src="~/images/cloth.jpg" alt="Clothes" width="1100" />
         <div class="panel-body">
             <p>@ViewData["Message"]</p>
         </div>
     </div>
     <div class="panel panel-success">
-        <div class="userForm panel-body row">
+        <div class="CustomerForm panel-body row">
             <div>Please Fillout This Form</div>
             <div class="col-md-7">
                 <form asp-controller="Donate" asp-action="DonateCreate">

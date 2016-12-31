@@ -65,7 +65,7 @@ namespace Charicare2.Controllers
 
         public IActionResult Charge()
         {
-            return View();
+            return RedirectToAction("ThankYou", "Donate");
         }
 
         //Form MEDICAL Donation Form/Index
@@ -130,6 +130,7 @@ namespace Charicare2.Controllers
             }
 
         }
+       
 
 
         public IActionResult ThankYou(NewDonateCreateViewModel model)

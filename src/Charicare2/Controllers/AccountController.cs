@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Charicare2.Models;
 using Charicare2.Models.AccountViewModels;
+using Charicare2.Data;
 
 namespace Charicare2.Controllers
 {
@@ -57,6 +58,7 @@ namespace Charicare2.Controllers
                 if (result.Succeeded)
                 {
                     _logger.LogInformation(1, "User logged in.");
+                    //ViewData["message"] = "signed in";
                     return RedirectToLocal(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
@@ -193,6 +195,11 @@ namespace Charicare2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl = null)
         {
+            if(User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Manager");
+            }
+
             if (ModelState.IsValid)
             {
                 // Get the information about the user from the external login provider
@@ -219,6 +226,13 @@ namespace Charicare2.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             return View(model);
         }
+        //public bool IsAuthenticated
+        //{
+        //    get
+        //    {
+        //        return this.context.User != null;
+        //    }
+        //}
 
         // GET: /Account/ConfirmEmail
         [HttpGet]

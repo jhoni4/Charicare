@@ -49,13 +49,22 @@ namespace Charicare2
             Console.WriteLine($"connection = {connection}");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connection));
 
+            //services.AddIdentity<Customer, IdentityRole>()
+            //    .AddEntityFrameworkStores<ApplicationDbContext>()
+            //    .AddDefaultTokenProviders();
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddMvc();
 
-         
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdministratorRole", policy => policy.RequireRole("Administrator"));
+            });
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -93,5 +102,7 @@ namespace Charicare2
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+
+
     }
 }

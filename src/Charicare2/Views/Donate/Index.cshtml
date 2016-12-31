@@ -4,59 +4,75 @@
     ViewData["Title"] = "Donate Categories";
     ViewData["Message"] = "Your donations to The ChariCare,  help transform lives! It is financial contributions that make it possible for The ChariCare Mission, Seniors helping Camp and hope to the homeless and poor in Ethiopia. ";
 }
+<br />
+<br />
+<div id="homeContainer">
+    <div class="jumbotron welcome2">
+            <hr />
+            <p>We started ChariCare Inc. to bring hope to the poor and  helpless elderlies located in Ethiopia, Through housing, food programs, and medical care. we can make a difference in their lives. Our goals is to Build Love, provide help and Restore hope those elderlies.
+            <p>
+                <b>ETHIOPIA AND THE ELDERLY</b>
+                Ethiopia has a growing population of elderly people. According to the BBC, the population of the elderly is expected to grow 55% by 2050. As this population increases, so do the number of poor, homeless, and hungry elderly.
+            </p>
+            <p>
+                <b>LACK OF SUPPORT</b>
+                There is no provision for programs of social security or other financial support for the elderly. Many are unable to work due to illness or age. These elderly are unable to care for themselves and their grandchildren.
+            </p>
+    </div>
 
-
-<div class="homeContainer">
-    <div class="well" style="background-color:rgba(10, 225, 0, 0.09)">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="menuLink">
-                    <a asp-controller="User" asp-action="UserIndex" asp-route-id="1">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <h3>Donate Clothes</h3>
+    <div class="parallax2">
+        <h1>CHANGE LIVES - DONATE NOW</h1>
+        <div class="well" style="background-color:rgba(128, 128, 128, 0.22)">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="menuLink">
+                        <a asp-controller="Customer" asp-action="CustomerIndex" asp-route-id="1">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <h3>Donate Clothes</h3>
+                                </div>
                             </div>
-                        </div>
-                        <img src="~/images/clothes1.png" alt="Clothes pic" width="500" height="300"/>
-                    </a>
+                            <img src="~/images/clothes1.png" alt="Clothes pic" width="500" height="300" />
+                        </a>
+                    </div>
                 </div>
-            </div>  
-            <div class="col-md-6">
-                <div class="menuLink">
-                    <a asp-controller="User" asp-action="UserIndex" asp-route-id="2">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <h3>Donate Money</h3>
+                <div class="col-md-6">
+                    <div class="menuLink">
+                        <a asp-controller="Customer" asp-action="CustomerIndex" asp-route-id="2">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <h3>Donate Money</h3>
+                                </div>
                             </div>
-                        </div>
-                        <img src="~/images/m2.png" alt="Money pic" width="500" height="300"/>
-                    </a>
+                            <img src="~/images/m2.png" alt="Money pic" width="500" height="300" />
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="menuLink">
-                    <a asp-controller="User" asp-action="UserIndex" asp-route-id="3">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <h3>Donate Goods</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="menuLink">
+                        <a asp-controller="Customer" asp-action="CustomerIndex" asp-route-id="3">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <h3>Donate Goods</h3>
+                                </div>
                             </div>
-                        </div>
-                        <img src="~/images/g1.png" alt="Goods pic" width="500" height="300"/>
-                    </a>
+                            <img src="~/images/g1.png" alt="Goods pic" width="500" height="300" />
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6 ">
-                <div class="menuLink">
-                    <a asp-controller="User" asp-action="UserIndex" asp-route-id="4">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <h3>Donate Medical</h3>
+                <div class="col-md-6 ">
+                    <div class="menuLink">
+                        <a asp-controller="Customer" asp-action="CustomerIndex" asp-route-id="4">
+                            <div class="caption">
+                                <div class="caption-content">
+                                    <h3>Donate Medical</h3>
+                                </div>
                             </div>
-                        </div>
-                        <img src="~/images/med4.png" alt="Medical pic" width="500" height="300"/>
-                    </a>
+                            <img src="~/images/med4.png" alt="Medical pic" width="500" height="300" />
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -9,12 +9,15 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="https://checkout.stripe.com/v3/checkout/button.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Sigmar+One" rel="stylesheet">
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Sigmar+One" rel="stylesheet">
     </environment>
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 </head>
@@ -40,22 +43,22 @@
                             Donate <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a asp-area="" asp-controller="User" asp-action="UserIndex" asp-route-id="1">Clothes</a></li>
-                            <li><a asp-area="" asp-controller="User" asp-action="UserIndex" asp-route-id="2">Money</a></li>
-                            <li><a asp-area="" asp-controller="User" asp-action="UserIndex" asp-route-id="3">Goods</a></li>
-                            <li><a asp-area="" asp-controller="User" asp-action="UserIndex" asp-route-id="4">Medical</a></li>
+                            <li><a asp-area="" asp-controller="Customer" asp-action="CustomerIndex" asp-route-id="1">Clothes</a></li>
+                            <li><a asp-area="" asp-controller="Customer" asp-action="CustomerIndex" asp-route-id="2">Money</a></li>
+                            <li><a asp-area="" asp-controller="Customer" asp-action="CustomerIndex" asp-route-id="3">Goods</a></li>
+                            <li><a asp-area="" asp-controller="Customer" asp-action="CustomerIndex" asp-route-id="4">Medical</a></li>
                         </ul>
                     </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact Us</a></li>
+                    @*<li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact Us</a></li>*@
+                    @await Html.PartialAsync("_LoginPartial")
                     <li><a asp-area="" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
                 </ul>
-                @await Html.PartialAsync("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="body-content">
+    <div class="body">
         @RenderBody()
         <hr />
         <footer>
@@ -68,6 +71,7 @@
         <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.maps.js"></script>
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="https://use.fontawesome.com/your-embed-code.js"></script> 
         <script src="~/js/site.js" asp-append-version="true"></script>
      </environment>
     <environment names="Staging,Production">
@@ -81,6 +85,7 @@
         </script>
         <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.js"></script>
         <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.maps.js"></script>
+        <script src="https://use.fontawesome.com/your-embed-code.js"></script> 
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 

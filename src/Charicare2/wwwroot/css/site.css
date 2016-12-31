@@ -1,6 +1,6 @@
 ﻿body {
     padding-bottom: 20px;
-    background-color:rgba(160, 185, 41, 0.30);
+    /*background-color:rgba(160, 185, 41, 0.30);*/
     padding-top: 70px; 
 }
 
@@ -9,6 +9,14 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+}
+#dashboardPage .blak, #dashboardPage .badge{
+    font-family: 'Sigmar One', cursive;
+    text-align:center; 
+    background-color:black; 
+    color:chartreuse;
+    text-align:center;
+    font-size: 2rem;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -19,26 +27,36 @@ textarea {
 }
 
 /* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
+/*@media screen and (max-width: 767px) {*/
   /* Hide captions */
-  .carousel-caption {
+  /*.carousel-caption {
     display: none
   }
+}*/
+.parallax2 h1 {
+    font-family: 'Sigmar One', cursive;
+    color: #538234;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    line-height: 1.2;
+    display: block;
+    font-weight: bold;
+    background-color:lightgray;
 }
 .caption h3 {
     font-size:4.5em;
     font-family:Aharoni;
     font-weight:600;
-    border:solid 1px black;
-    text-shadow:1px 6px 2px #ffd800;
+    border:solid 1px #5dfe00;
+    text-shadow:1px 6px 2px #5dfe00;
 }
 .menu {
     display: block;
 }
 .menuLink a .caption {
-  background-color: rgba(137, 159, 33, 0.56);
+  background-color: rgba(220, 251, 211, 0.32);
   position: absolute;
-  border: 1px solid #151515;
   margin-bottom: 8px;
   border-radius: 8px;
   width: 92%;
@@ -57,14 +75,22 @@ textarea {
   opacity: 1; }
 .menuLink img {
     height: 300px;
-    max-width: 100%;
+    max-width: 80%;
     padding-bottom: 1%;
 }
-.welcome {
+#welcome1 {
     text-align:left;
      background-image:url("/images/ban22.jpg");
      background-repeat:no-repeat;
      background-size:cover;
+     padding:2%;
+}
+.welcome2 {
+    text-align:left;
+     background-image:url("/images/lime9.png");
+     background-repeat:no-repeat;
+     background-size:cover;
+     padding:2%;
 }
 .navbar {
     background-color: #39870C; 
@@ -80,14 +106,9 @@ textarea {
     margin-top:150px;
 }
 
-.Dashboard, .clothpage, .GoodsPage, .MedicalPage, MoneyPage, .homeContainer, .aboutContainer, .dashboardPage, .thankyouContainer, .FormContainer {
+#clothpage, #GoodsPage, #MedicalPage, #MoneyPage, #welcome2, #dashboardPage, #thankyouContainer, #FormContainer {
     color: darkgreen;
     margin-top:200px;
-}
-
-.userForm {
-    background-color: #0c4f12;
-    color: white;
 }
   
 .navbar-inverse .navbar-nav > li > a {  
@@ -132,4 +153,18 @@ textarea {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+ .CustomerForm {
+    /* The image used */
+    background-image: url("/images/lime8.png");
+    /* Full height */
+    height: 100%;
+    /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #0c4f12;
+    color: white;
+    margin:5px;
 }

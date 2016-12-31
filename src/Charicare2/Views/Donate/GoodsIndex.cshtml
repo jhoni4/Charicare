@@ -1,16 +1,16 @@
 @model Charicare2.Models.AppViewModels.DonateGoodsIndexViewModel
 
 @{
-    ViewData["Title"] = "Donate Goods supplies";
+    ViewData["Title"] = "Donate Goods";
     ViewData["Mssage"] = "When you donate food, clothing or other goods to The Bowery Mission, you impact the lives of the poor and homeless in New York City. This year, our donors and volunteers helped the Mission provide more than 406,000 meals, 44,700 bags of groceries, and 44,100 articles of clothing to men, women and children in desperate need of help.. ";
 
 }
 
-<div class="GoodsPage">
+<div id="GoodsPage">
     <div class="panel panel-default">
         <div class="panel-heading">
             @*<h2>@ViewData["Title"]</h2>*@
-            <img src="~/images/g2.jpg" alt="Clothes" width="1100" />
+            <img src="~/images/g2.jpg" alt="Clothes" width="1200" />
         </div>
         <div class="panel-body">
             <p>@ViewData["Message"]</p>
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="panel panel-success">
-        <div class="userForm panel-body row">
+        <div class="CustomerForm panel-body row">
             <div>Please Fillout This Form</div>
             <div class="col-md-7">
                 <form asp-controller="Donate" asp-action="DonateCreate">

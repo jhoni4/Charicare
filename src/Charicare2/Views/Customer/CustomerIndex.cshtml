@@ -1,13 +1,16 @@
 ﻿@model Charicare2.Models.AppViewModels.CustomerFormViewModel
 
 @{
-    ViewData["Title"] = "Customer sign in form";
+    ViewData["Title"] = "Donor information";
 }
 
 
 <div class="row FormContainer">
     <div class="col-md-6 panel panel-success">
-        <div class="panel-heading">Please Fillout This Form Before You Begin Donating</div>
+        <div class="panel-heading" style="background-color:black; color:chartreuse;">
+            <h3>@ViewData["Title"]</h3>
+            <h5>Please Fillout This Form Before You Begin Donating</h5>
+        </div>
         <div class="CustomerForm"> 
                 <form id="clearBtn" asp-controller="Customer" asp-action="CustomerCreate" asp-route-id="@Model.DonateTypeId" method="post" class="form-horizontal">
                     <div asp-validation-summary="All" class="text-danger"></div>
@@ -67,7 +70,7 @@
         </div>
     <div class="col-lg-6">
         <div>
-            <img src="~/images/old11.jpg" alt="old lady" height="700" />
+            <img src="~/images/old11.jpg" alt="old lady" height="600" />
         </div>
     </div>
 </div>

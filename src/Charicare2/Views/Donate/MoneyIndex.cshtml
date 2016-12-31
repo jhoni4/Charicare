@@ -64,18 +64,19 @@
     
 }
 
-<div class="MoneyPage">
+<div id="MoneyPage">
     <!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/bdg_now_accepting_pp_2line_w.png" border="0" alt="Now Accepting PayPal"></a><div style="text-align:center"><a href="https://www.paypal.com/webapps/mpp/how-paypal-works"><font size="2" face="Arial" color="#0079CD">How PayPal Works</font></a></div></td></tr></table><!-- PayPal Logo -->
     <div class="panel panel-default">
-        <div class="panel-heading">
-            <img src="~/images/m4.jpg" alt="Money pic" width="1100" />
+        <div class="panel-heading" style="background-color:black; color:chartreuse;">
+            <h2>@ViewData["Title"]</h2>
         </div>
+            <img src="~/images/m4.jpg" alt="Money pic" width="1100" />
         <div class="panel-body">
             <p>@ViewData["Message"]</p>
         </div>
     </div>
     <div class="panel panel-success">
-        <div class="userForm panel-body row">
+        <div class="CustomerForm panel-body row">
         <div>Please Fillout This Form</div>
             <div class="col-md-8">
                 <form asp-controller="Donate" asp-action="DonateCreate">
