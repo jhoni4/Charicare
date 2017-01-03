@@ -119,6 +119,8 @@ namespace Charicare2.Controllers
             }
 
             var donate = await context.Donate.SingleOrDefaultAsync(m => m.DonateId == id);
+             donate.danatedBy = await context.Customer.Where(m => m.CustomerId == donate.CustomerId).SingleOrDefaultAsync();
+             donate.donatType = await context.DonateType.Where(m => m.DonateTypeId == donate.DonateTypeId).SingleOrDefaultAsync();
             if (donate == null)
             {
                 return NotFound();

@@ -22,3 +22,4 @@ if (ViewBag.message != null)
             toastr.success('Added')
         })
 }
+

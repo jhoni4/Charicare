@@ -26,5 +26,7 @@ namespace Charicare2.Models
         public int DonateTypeId { get; set; }
 
         public DateTime DateCreated { get; set; }
+        public Customer danatedBy { get; internal set; }
+        public DonateType donatType { get; internal set; }
     }
 }

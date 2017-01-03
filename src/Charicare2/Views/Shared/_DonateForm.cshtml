@@ -5,7 +5,7 @@
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     
     <div class="form-group">
-        <label asp-for="@Model.Donate.Name" class="col-md-2 control-label">Name/ Cash for Money</label>
+        <label asp-for="@Model.Donate.Name" class="col-md-2 control-label">Name/ Cash or Card for Money</label>
         <div class="col-md-10">
             <input asp-for="@Model.Donate.Name" class="form-control" />
             <span asp-validation-for="@Model.Donate.Name" class="text-danger" />
@@ -19,15 +19,10 @@
         </div>
     </div>
     <div class="form-group">
-        <label asp-for="@Model.Donate.Note" class="col-md-2 control-label">Detail/ Quantity/ Best Time To Contact</label>
+        <label asp-for="@Model.Donate.Note" class="col-md-2 control-label">Detail/Quantity/ Best Time To Contact</label>
         <div class="col-md-10">
             <textarea asp-for="@Model.Donate.Note" class="form-control" cols="20" rows="2"></textarea>
             <span asp-validation-for="@Model.Donate.Note" class="text-danger" />
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-primary" />
         </div>
     </div>
 </div>
