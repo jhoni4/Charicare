@@ -63,10 +63,45 @@ namespace Charicare2.Controllers
             return View(model);
         }
 
+        public IActionResult StripeForm(NewDonateCreateViewModel model, [FromRoute] int Id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            model.CustomerId = ActiveUser.Instance.Customer.CustomerId;
+            Donate d = new Donate();
+            d.DonateTypeId = ActiveUser.Instance.DonateTypeId;
+            d.Name = model.Donate.Name;
+            d.Note = model.Donate.Note;
+            d.Value = model.Donate.Value;
+            d.CustomerId = model.CustomerId;
+
+            context.Donate.Add(d);
+            try
+            {
+                context.SaveChanges();
+                return RedirectToAction("StripeCheckout", "Donate");
+            }
+
+            catch (DbUpdateException)
+            {
+                return RedirectToAction("StripeForm", "Donate");
+            }
+        }
+
+        public IActionResult StripeCheckout()
+        {
+            StripeFormViewModel model = new StripeFormViewModel();
+            return View(model);
+        }
+
         public IActionResult Charge()
         {
             return RedirectToAction("ThankYou", "Donate");
         }
+
 
         //Form MEDICAL Donation Form/Index
         public IActionResult MedicalIndex()

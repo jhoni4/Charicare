@@ -12,10 +12,10 @@
             @Html.DisplayFor(model => model.DateCreated)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.DonateTypeId)
+            @Html.DisplayNameFor(model => model.donatType)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.DonateTypeId)
+            @Html.DisplayFor(model => model.donatType.Name)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Name)
@@ -30,10 +30,10 @@
             @Html.DisplayFor(model => model.Note)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.CustomerId)
+            @Html.DisplayNameFor(model => model.danatedBy)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.CustomerId)
+            @Html.DisplayFor(model => model.danatedBy.FullName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Value)
