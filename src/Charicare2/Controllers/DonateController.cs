@@ -91,16 +91,19 @@ namespace Charicare2.Controllers
             }
         }
 
+        // GET: /Donate/StripeCheckout
         public IActionResult StripeCheckout()
         {
             StripeFormViewModel model = new StripeFormViewModel();
             return View(model);
         }
 
+        // POST: /Donate/Charge
         public IActionResult Charge()
         {
             return RedirectToAction("ThankYou", "Donate");
         }
+        
 
 
         //Form MEDICAL Donation Form/Index
@@ -170,7 +173,8 @@ namespace Charicare2.Controllers
 
         public IActionResult ThankYou(NewDonateCreateViewModel model)
         {
-            model.Donator = ActiveUser.Instance.Customer.FullName;
+            model.DonatorFirstName = ActiveUser.Instance.Customer.FirstName;
+            model.DonatorLastName = ActiveUser.Instance.Customer.LastName;
             return View(model);
         }
 

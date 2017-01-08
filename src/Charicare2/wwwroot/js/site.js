@@ -1,25 +1,41 @@
-﻿
-//// Write your Javascript code.
-//$( document ).ready(function() {
-//    if (Page.User.Identity.IsAuthenticated)//check if logged in user exists
-//    { 
-//        $("#loginChecker").addClass("private").show();
-//    }
-//    else
-//    {
-//        $("#loginChecker").hide();
-//    }
+﻿//////////////STRIPE////////////
+Stripe.setPublishableKey('pk_test_y2eBblD7FUgXHkO3s0BCxdek');
+$(function () {
+    var $form = $('#payment-form');
+    $form.submit(function (event) {
+        // Disable the submit button to prevent repeated clicks:
+        $form.find('.submit').prop('disabled', true);
 
-//});
-//alert(@TempData["Message"]);
-//$(document).ready(function () {
-//    toastr.success('Added')
-//})
-if (ViewBag.message != null)
-{
+        // Request a token from Stripe:
+        Stripe.card.createToken($form, stripeResponseHandler);
 
-        $(document).ready(function () {   
-            toastr.success('Added')
-        })
-}
+        // Prevent the form from being submitted:
+        return false;
+    });
+});
 
+function stripeResponseHandler(status, response) {
+    // Grab the form:
+    var $form = $('#payment-form');
+
+    if (response.error) { // Problem!
+        console.log(response.error);
+        $('#errorMessage').text(response.error.message);
+        // Show the errors on the form:
+        $form.find('.payment-errors').text(response.error.message);
+        $form.find('.submit').prop('disabled', false); // Re-enable submission
+
+    } else { // Token was created!
+        // Get the token ID:
+        var token = response.id;
+
+        console.log(response);
+        // Insert the token ID into the form so it gets submitted to the server:
+        $form.append($('<input type="hidden" name="stripeToken">').val(token));
+
+        // Submit the form:
+        $form.get(0).submit();
+
+    }
+};
+  

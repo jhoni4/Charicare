@@ -9,7 +9,9 @@ namespace Charicare2.Models.AppViewModels
 {
     public class CustomerFormViewModel : BaseViewModel
     {
-        public string FullName { get; set; }
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public string Email { get; set; }
 

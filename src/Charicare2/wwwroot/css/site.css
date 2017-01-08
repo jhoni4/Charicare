@@ -1,9 +1,18 @@
 ﻿body {
     padding-bottom: 20px;
-    /*background-color:rgba(160, 185, 41, 0.30);*/
+    background-color:rgba(155, 173, 66, 0.24);
     padding-top: 70px; 
+    /*font-size:20px;*/
+    font-family: 'Bree Serif', serif;
 }
 
+.Firstheader {
+     font-family: 'Bree Serif', serif;
+     font-style:italic;
+     color:slategrey;
+     text-shadow: 0.5px 1px 0.5px #8E8E8E;
+     font-size:20px;
+ }
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -15,8 +24,13 @@
     text-align:center; 
     background-color:black; 
     color:chartreuse;
+    font-size: 2rem;
+}
+.blak {
+    font-family: 'Sigmar One', cursive;
     text-align:center;
     font-size: 2rem;
+    text-emphasis-color:aqua;
 }
 .parallax2 .blak h1{
     font-family: 'Sigmar One', cursive;
@@ -34,13 +48,13 @@ textarea {
     max-width: 280px;
 }
 
-/* Hide/rearrange for smaller screens */
-/*@media screen and (max-width: 767px) {*/
-  /* Hide captions */
-  /*.carousel-caption {
+ /*Hide/rearrange for smaller screens*/ 
+@media screen and (max-width: 767px) {
+   Hide captions 
+  .carousel-caption {
     display: none
   }
-}*/
+}
 .parallax2 h1 {
     font-family: 'Sigmar One', cursive;
     color: #538234;
@@ -63,37 +77,41 @@ textarea {
     display: block;
 }
 .menuLink a .caption {
-  background-color: rgba(255, 106, 0, 0.34);
+  background-color: rgba(57, 135, 12, 0.22);
   position: absolute;
   margin-bottom: 8px;
   border-radius: 8px;
   width: 92%;
   height: 98%;
   opacity: 0;
-  padding-top: 20%;
+  padding-top: 5%;
   box-shadow: 4px 2px 6px #8E8E8E; 
   -webkit-box-shadow: 4px 2px 6px #8E8E8E;
 }
 .menuLink .caption .caption-content {
     color: black;
-    font-family: 'Quicksand', sans-serif; 
+    font-family: 'Quicksand', sans-serif;
+    /*font-family: 'Shrikhand', cursive;*/ 
+    font-style:italic;
     text-align:center;
 }
 .menuLink .caption:hover {
   opacity: 1; }
 .menuLink img {
-    height: 300px;
-    max-width: 80%;
-    padding-bottom: 1%;
+    height: 200px;
+    max-width: 70%;
+    margin-left: 15%;
 }
-#welcome1 {
+.welcome2 well {
     text-align:left;
-     background-image:url("/images/ban22.jpg");
+     background: no-repeat round url("/images/ban22.jpg");
      background-repeat:no-repeat;
      background-size:cover;
      padding:2%;
+     
 }
 .welcome2 {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align:left;
      background-image:url("/images/lime9.png");
      background-repeat:no-repeat;
@@ -128,7 +146,7 @@ textarea {
   
 .navbar-inverse .navbar-nav > li > a:hover,  
 .navbar-inverse .navbar-nav > li > a:focus{  
-  color: black;      
+  color: chartreuse;      
 }
 
 .navbar {
@@ -176,3 +194,11 @@ textarea {
     color: white;
     margin:5px;
 }
+ .labels {
+     font-style:italic;
+     color:white;
+     text-shadow: 2px 2px 5px #000;
+     font-size:18px;
+ }
+ 
+ 

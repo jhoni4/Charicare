@@ -16,13 +16,18 @@ namespace Charicare2.Models
 
         [Required]
         [StringLength(55)]
-        public string FullName { get; set; }
+        public string FirstName { get; set; }
 
         [Required]
-        //[DataType(DataType.EmailAddress)]
-        //[EmailAddress]
+        [StringLength(55)]
+        public string LastName { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
 
+        [RegularExpression(@"^(\d{10})$", ErrorMessage = "Wrong mobile")]
         [DisplayFormat(DataFormatString = "{0:###-###-####}")]
         public long Telephone { get; set; }
 

@@ -1,50 +1,6 @@
 ﻿@model Charicare2.Models.AppViewModels.StripeFormViewModel
 
 @{
-    <link rel="stylesheet" href="https://checkout.stripe.com/v3/checkout/button.css" />
-    <script type="text/javascript" src="https://checkout.stripe.com/checkout.js"></script>
-    <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
-    <script type="text/javascript">
-        Stripe.setPublishableKey('pk_test_y2eBblD7FUgXHkO3s0BCxdek');
-        $(function () {
-            var $form = $('#payment-form');
-            $form.submit(function (event) {
-                // Disable the submit button to prevent repeated clicks:
-                $form.find('.submit').prop('disabled', true);
-
-                // Request a token from Stripe:
-                Stripe.card.createToken($form, stripeResponseHandler);
-
-                // Prevent the form from being submitted:
-                return false;
-            });
-        });
-
-        function stripeResponseHandler(status, response) {
-            // Grab the form:
-            var $form = $('#payment-form');
-
-            if (response.error) { // Problem!
-
-                // Show the errors on the form:
-                $form.find('.payment-errors').text(response.error.message);
-                $form.find('.submit').prop('disabled', false); // Re-enable submission
-
-            } else { // Token was created!
-
-                // Get the token ID:
-                var token = response.id;
-
-                // Insert the token ID into the form so it gets submitted to the server:
-                $form.append($('<input type="hidden" name="stripeToken">').val(token));
-
-                // Submit the form:
-                $form.get(0).submit();
-            }
-        };
-    </script>
-
-
     ViewData["Title"] = "Donor's  card information";
 }
 
@@ -55,12 +11,11 @@
             <h3>@ViewData["Title"]</h3>
         </div>
         <div class="CustomerForm">
-            <div class="form-horizontal">
                 <hr />
                 <br />
                 <div class="container" style="color:darkblue;">
                     <form action="Charge" method="POST" id="payment-form">
-                            <span class="payment-errors"></span>
+                            <span class="payment-errors" style="background-color:pink; font-size:1.2em;"></span>
 
                             <div class="form-row">
                                 <label>
@@ -75,7 +30,7 @@
                                     <input type="text" size="2" data-stripe="exp_month">
                                 </label>
                                 <span> / </span>
-                                <input type="text" size="2" data-stripe="exp_year">
+                                <input type="text" size="4" data-stripe="exp_year">
                             </div>
 
                             <div class="form-row">
@@ -90,9 +45,8 @@
                         </form>
                 </div>
             </div>
-            </div>
         </div>
     </div>
-            @section Scripts {
-                @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
-            }
+    @section Scripts {
+        @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    }

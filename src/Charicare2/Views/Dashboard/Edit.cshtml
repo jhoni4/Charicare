@@ -1,11 +1,11 @@
 @model Charicare2.Models.Donate
 
-@{
-    ViewData["Title"] = "Edit";
-}
-<br /><br /><br /><br /><br /><br /><br /><br /><br />
+
 <div class="CustomerForm">
-<h2>Edit</h2>
+    <div class="modal-header">
+        <h3>Donate Edit</h3>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
     <form asp-action="Edit">
         <div class="form-horizontal">
             <hr />
@@ -61,8 +61,9 @@
         </div>
     </form>
 </div>
-<div>
+<div class="modal-footer">
     <a asp-action="Index">Back to List</a>
+    <a class="btn btn-default" asp-action="Index" style="float:left;">Close</a>
 </div>
 
 @section Scripts {

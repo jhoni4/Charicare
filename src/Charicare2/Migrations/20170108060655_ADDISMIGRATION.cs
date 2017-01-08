@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Charicare2.Migrations
 {
-    public partial class NEWMIGRATIONS1 : Migration
+    public partial class ADDISMIGRATION : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -33,6 +33,39 @@ namespace Charicare2.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Customer",
+                columns: table => new
+                {
+                    CustomerId = table.Column<int>(nullable: false)
+                        .Annotation("Autoincrement", true),
+                    City = table.Column<string>(nullable: true),
+                    Email = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(maxLength: 55, nullable: false),
+                    LastName = table.Column<string>(maxLength: 55, nullable: false),
+                    State = table.Column<string>(nullable: true),
+                    Street = table.Column<string>(nullable: true),
+                    Telephone = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customer", x => x.CustomerId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DonateType",
+                columns: table => new
+                {
+                    DonateTypeId = table.Column<int>(nullable: false)
+                        .Annotation("Autoincrement", true),
+                    Description = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DonateType", x => x.DonateTypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -105,6 +138,36 @@ namespace Charicare2.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Donate",
+                columns: table => new
+                {
+                    DonateId = table.Column<int>(nullable: false)
+                        .Annotation("Autoincrement", true),
+                    CustomerId = table.Column<int>(nullable: false),
+                    DateCreated = table.Column<DateTime>(nullable: false, defaultValueSql: "strftime('%Y-%m-%d %H:%M:%S')"),
+                    DonateTypeId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(maxLength: 55, nullable: false),
+                    Note = table.Column<string>(maxLength: 255, nullable: true),
+                    Value = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Donate", x => x.DonateId);
+                    table.ForeignKey(
+                        name: "FK_Donate_Customer_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customer",
+                        principalColumn: "CustomerId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Donate_DonateType_DonateTypeId",
+                        column: x => x.DonateTypeId,
+                        principalTable: "DonateType",
+                        principalColumn: "DonateTypeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
@@ -161,6 +224,16 @@ namespace Charicare2.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
+                name: "IX_Donate_CustomerId",
+                table: "Donate",
+                column: "CustomerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Donate_DonateTypeId",
+                table: "Donate",
+                column: "DonateTypeId");
+
+            migrationBuilder.CreateIndex(
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName");
@@ -194,6 +267,9 @@ namespace Charicare2.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Donate");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
             migrationBuilder.DropTable(
@@ -207,6 +283,12 @@ namespace Charicare2.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "Customer");
+
+            migrationBuilder.DropTable(
+                name: "DonateType");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

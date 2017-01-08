@@ -12,7 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using Charicare2.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace Charicare2.Controllers
 {
@@ -22,17 +23,29 @@ namespace Charicare2.Controllers
 
         //Constructor functions that takes context 
         //and sets them to the private variables above
-
-        public DashboardController(ApplicationDbContext ctx)
+        private readonly UserManager<ApplicationUser> _userManager;
+        public DashboardController(ApplicationDbContext ctx, UserManager<ApplicationUser> userManager)
         {
+            _userManager = userManager;
             context = ctx;
         }
+        
 
+        // This task retrieves the currently authenticated user
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public IActionResult Index(string sortOrder)
+        public async Task<IActionResult> Index(string sortOrder)
         {
-            //ViewData["Title"] = "Dashboard";
-            Chart sales = new Chart();
+            var user = await GetCurrentUserAsync();
+            var roles = ((ClaimsIdentity)User.Identity).Claims
+                .Where(c => c.Type == ClaimTypes.Role)
+                .Select(c => c.Value);
+
+            Console.WriteLine("roles");
+            
+
+                //ViewData["Title"] = "Dashboard";
+                Chart sales = new Chart();
             //// Setting chart 
             sales.SetChartParameter(Chart.ChartParameter.chartId, "myChart");
             sales.SetChartParameter(Chart.ChartParameter.chartType, "column3d");
@@ -41,7 +54,11 @@ namespace Charicare2.Controllers
             sales.SetData("{\"chart\":{\"caption\":\"Monthly\",\"xaxisname\":\"Month\",\"yaxisname\":\"Revenue\",\"numberprefix\":\"$\",\"showvalues\":\"1\",\"animation\":\"0\"},\"data\":[{\"label\":\"Jan\",\"value\":\"420000\"},{\"label\":\"Feb\",\"value\":\"910000\"},{\"label\":\"Mar\",\"value\":\"720000\"},{\"label\":\"Apr\",\"value\":\"550000\"},{\"label\":\"May\",\"value\":\"810000\"},{\"label\":\"Jun\",\"value\":\"510000\"},{\"label\":\"Jul\",\"value\":\"680000\"},{\"label\":\"Aug\",\"value\":\"620000\"},{\"label\":\"Sep\",\"value\":\"610000\"},{\"label\":\"Oct\",\"value\":\"490000\"},{\"label\":\"Nov\",\"value\":\"530000\"},{\"label\":\"Dec\",\"value\":\"330000\"}],\"trendlines\":[{\"line\":[{\"startvalue\":\"700000\",\"istrendzone\":\"1\",\"valueonright\":\"1\",\"tooltext\":\"AYAN\",\"endvalue\":\"900000\",\"color\":\"009933\",\"displayvalue\":\"Target\",\"showontop\":\"1\",\"thickness\":\"5\"}]}],\"styles\":{\"definition\":[{\"name\":\"CanvasAnim\",\"type\":\"animation\",\"param\":\"_xScale\",\"start\":\"0\",\"duration\":\"1\"}],\"application\":[{\"toobject\":\"Canvas\",\"styles\":\"CanvasAnim\"}]}}", Chart.DataFormat.json);
 
             DashboardListViewModel model = new DashboardListViewModel(context);
-            model.DonateTypes = context.DonateType.ToList();
+            foreach (var role in roles)
+            {
+                model.UserRole = role.ToString();
+            }
+                model.DonateTypes = context.DonateType.ToList();
             model.donates = context.Donate.ToList();
             model.donners = context.Customer.ToList();
 
@@ -110,27 +127,34 @@ namespace Charicare2.Controllers
             return View(model);
         }
 
+        public ActionResult ModalAction(int Id)
+        {
+            ViewBag.Id = Id;
+            return PartialView("ModalContent");
+        }
+        public PartialViewResult CreateUsingModal()
+        {
+            return PartialView();
+        }
         // GET: Donate/Details/5
+        [Authorize]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
             var donate = await context.Donate.SingleOrDefaultAsync(m => m.DonateId == id);
-             donate.danatedBy = await context.Customer.Where(m => m.CustomerId == donate.CustomerId).SingleOrDefaultAsync();
-             donate.donatType = await context.DonateType.Where(m => m.DonateTypeId == donate.DonateTypeId).SingleOrDefaultAsync();
+            donate.danatedBy = await context.Customer.Where(m => m.CustomerId == donate.CustomerId).SingleOrDefaultAsync();
+            donate.donatType = await context.DonateType.Where(m => m.DonateTypeId == donate.DonateTypeId).SingleOrDefaultAsync();
             if (donate == null)
             {
                 return NotFound();
             }
 
-            return View(donate);
+            return PartialView(donate);
         }
-        
 
-        // GET: Donate/Edit/5
         [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
@@ -144,7 +168,7 @@ namespace Charicare2.Controllers
             {
                 return NotFound();
             }
-            return View(donate);
+            return PartialView(donate);
         }
 
         // POST: Donate/Edit/5
@@ -180,7 +204,7 @@ namespace Charicare2.Controllers
                 }
                 return RedirectToAction("Index");
             }
-            return View(donate);
+            return PartialView(donate);
         }
 
         // GET: Donate/Delete/5
@@ -198,7 +222,7 @@ namespace Charicare2.Controllers
                 return NotFound();
             }
 
-            return View(donate);
+            return PartialView(donate);
         }
 
         // POST: Donate/Delete/5

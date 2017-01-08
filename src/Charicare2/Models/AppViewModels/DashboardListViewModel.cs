@@ -11,6 +11,7 @@ namespace Charicare2.Models.AppViewModels
     {
         internal IQueryable<Donate> donatess;
 
+        public string UserRole { get; set; }
         public double ClothTotalValue { get; set; }
         public double GoodsTotalValue { get; set; }
         public double MoneyTotalValue { get; set; }
