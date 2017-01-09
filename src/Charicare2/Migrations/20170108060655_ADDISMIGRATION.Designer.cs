@@ -8,8 +8,8 @@ using Charicare2.Data;
 namespace Charicare2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20161229222358_NEWMIGRATIONS1")]
-    partial class NEWMIGRATIONS1
+    [Migration("20170108060655_ADDISMIGRATION")]
+    partial class ADDISMIGRATION
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,7 +79,11 @@ namespace Charicare2.Migrations
                     b.Property<string>("Email")
                         .IsRequired();
 
-                    b.Property<string>("FullName")
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasAnnotation("MaxLength", 55);
+
+                    b.Property<string>("LastName")
                         .IsRequired()
                         .HasAnnotation("MaxLength", 55);
 
@@ -117,6 +121,10 @@ namespace Charicare2.Migrations
                     b.Property<double>("Value");
 
                     b.HasKey("DonateId");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("DonateTypeId");
 
                     b.ToTable("Donate");
                 });
@@ -240,6 +248,19 @@ namespace Charicare2.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Charicare2.Models.Donate", b =>
+                {
+                    b.HasOne("Charicare2.Models.Customer", "danatedBy")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Charicare2.Models.DonateType", "donatType")
+                        .WithMany()
+                        .HasForeignKey("DonateTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>

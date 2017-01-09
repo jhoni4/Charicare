@@ -2,12 +2,13 @@
 
 @{
     ViewData["Title"] = "Donate Money";
-    ViewData["Mssage"] = "Your donations to The ChariCare,  help transform lives! It is financial contributions that make it possible for The Bowery Mission, Mont Lawn Camp and Mont Lawn City Camp to provide help and hope to the homeless and poor in Nashville City. ";
+    ViewData["Message"] = "Your donations to The ChariCare,  help transform lives! It is financial contributions that make it possible for The ChariCare Mission, to provide help and hope to the elderlies and poor in the City. ";
 }
 
 <div id="MoneyPage">
+    <!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center" style="position:fixed; z-index:3;"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/bdg_now_accepting_pp_2line_w.png" border="0" alt="Now Accepting PayPal"></a><div style="text-align:center"><a href="https://www.paypal.com/webapps/mpp/how-paypal-works"><font size="2" face="Arial" color="#0079CD">How PayPal Works</font></a></div></td></tr></table><!-- PayPal Logo -->
     <div class="panel panel-default">
-        <div class="panel-heading" style="background-color:black; color:chartreuse;">
+        <div class="panel-heading blak" style="background-color:black; color:chartreuse;">
             <h2>@ViewData["Title"]</h2>
         </div>
             <img src="~/images/m4.jpg" alt="Money pic" width="1250" />
@@ -16,23 +17,22 @@
         </div>
     </div>
     <div class="panel panel-success">
-        <!-- PayPal Logo --><table border="0" cellpadding="10" cellspacing="0" align="center"><tr><td align="center"></td></tr><tr><td align="center"><a href="https://www.paypal.com/webapps/mpp/paypal-popup" title="How PayPal Works" onclick="javascript:window.open('https://www.paypal.com/webapps/mpp/paypal-popup','WIPaypal','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, width=1060, height=700'); return false;"><img src="https://www.paypalobjects.com/webstatic/mktg/logo/bdg_now_accepting_pp_2line_w.png" border="0" alt="Now Accepting PayPal"></a><div style="text-align:center"><a href="https://www.paypal.com/webapps/mpp/how-paypal-works"><font size="2" face="Arial" color="#0079CD">How PayPal Works</font></a></div></td></tr></table><!-- PayPal Logo -->
         <div class="CustomerForm panel-body row">
-        <div>Please Fillout This Form</div>
+        <div class="blak">Please Fillout This Form</div>
             <div class="col-md-8">
                 <form asp-controller="Donate" asp-action="DonateCreate">
                     @{Html.RenderPartial("_DonateForm");}
-                    <div class="row col-md-offset-2">
+                    <div class="row col-md-offset-3">
                         <div class="form-group col-md-2">
-                            <input type="submit" value="Donate Cash" class="btn btn-success" />
+                            <input type="submit" value="Donate In Cash" class="btn btn-success" />
                         </div>
                         <div class="form-group col-md-offset-3">
-                            <input type="submit" formaction="StripeForm" value="Donate with Stripe" class="btn btn-primary" />
+                             <input type="submit" formaction="StripeForm" value="Donate with Stripe" class="btn btn-primary" data-toggle="modal" data-target="#myModal" />
                         </div>
                     </div>
                 </form>
                 <div class="row">
-                    <span class="col-md-2"> Or Use PayPal</span>
+                    <span class="col-md-3"> Or Use PayPal</span>
                     <div class="col-md-3">
                         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
                             <input type="hidden" name="cmd" value="_s-xclick">
@@ -41,7 +41,6 @@
                             <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
                         </form>
                     </div>
-                     
                 </div>
             </div>
             <div class="col-md-3">
@@ -51,4 +50,10 @@
         <img style="float:right" src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/cc-badges-ppppcmcvdam.png" alt="Pay with PayPal, PayPal Credit or any major credit card" />
     </div>
 </div>
+
+
+
+
+
+
 <a asp-action="Index">Back to Home</a>

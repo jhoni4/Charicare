@@ -1,4 +1,6 @@
 ﻿using Charicare2.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -10,10 +12,27 @@ namespace Charicare2.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        public static async void Initialize(IServiceProvider serviceProvider)
         {
             using (var context = new ApplicationDbContext(serviceProvider.GetRequiredService<DbContextOptions<ApplicationDbContext>>()))
             {
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context), null, null, null, null, null);
+                var store = new RoleStore<IdentityRole>(context);
+                var userstore = new UserStore<ApplicationUser>(context);
+                var usermanager = new UserManager<ApplicationUser>(userstore, null, new PasswordHasher<ApplicationUser>(null), null, null, null, null, null, null);
+
+                if (!context.Roles.Any(r => r.Name == "Administrator"))
+                {
+                    var role = new IdentityRole { Name = "Administrator" };
+                    await roleManager.CreateAsync(role);
+                }
+
+                if (!context.Roles.Any(r => r.Name == "Member"))
+                {
+                    var role = new IdentityRole { Name = "Member" };
+                    await roleManager.CreateAsync(role);
+                }
+
                 // Look for any products.
                 if (context.DonateType.Any())
                 {
@@ -142,11 +161,17 @@ namespace Charicare2.Data
                 }
                 context.SaveChanges();
 
+                if (context.Customer.Any())
+                {
+                    return;   // DB has been seeded
+                }
+
                 // 3  Customer.  - Seeding the database.
                 var Customers = new Customer[]
                 {
                   new Customer {
-                      FullName = "Micheal Brown",
+                      FirstName = "Micheal",
+                      LastName = "Brown",
                       Street = "600 penselvenia ave",
                       State = "DC",
                       City = "washington",
@@ -154,7 +179,8 @@ namespace Charicare2.Data
                       Telephone = 555-287-2516
                   },
                   new Customer {
-                      FullName = "James Douglas",
+                      FirstName = "James",
+                      LastName = "Douglas",
                       Street = "300 infinity st",
                       State = "TN",
                       City = "Frankline",
@@ -162,7 +188,8 @@ namespace Charicare2.Data
                       Telephone = 555-237-2416
                   },
                   new Customer {
-                      FullName = "Sandra Miller",
+                      FirstName = "Sandra",
+                      LastName = "Miller",
                       Street = "27 Beverly hills ave",
                       State = "CA",
                       City = "Los Angles",
@@ -170,7 +197,8 @@ namespace Charicare2.Data
                       Telephone = 555-087-2396
                   },
                   new Customer {
-                      FullName = "John Doe",
+                      FirstName = "John",
+                      LastName = "Doe",
                       Street = "500 Interstate blvd",
                       State = "TN",
                       City = "Nasville",

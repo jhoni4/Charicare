@@ -16,8 +16,8 @@
             var fusioncharts = new FusionCharts({
                 type: 'column3d',
                 renderAt: 'chart-container',
-                width: '500',
-                height: '300',
+                width: '600',
+                height: '400',
                 dataFormat: 'json',
                 dataSource: {
                     "chart": {
@@ -38,7 +38,7 @@
                         "palettecolors": "#39870C"
                     },
                     "annotations": {
-                        "autoscale": "0",
+                        "autoscale": "1",
                         "scaleimages": "1",
                         "origw": "30",
                         "origh": "30",
@@ -103,118 +103,147 @@
         });
     </script>
 }
+
 <div id="dashboardPage" class="Dashboard">
-    <div class="parallax1">
-        <div class="panel panel-success row">  
-            <div class="panel-heading blak" ><h3 style="font-size: 3rem;">Dashboard</h3></div>
-            <div class="panel-body">
-                <div class="col-md-6">
-                    <img src="~/images/a-motto.png" width="200" height="200" />
+    <table class="table">
+        <thead>
+            <div class="panel-heading blak"><h3 style="font-size: 3rem;">Dashboard</h3></div>
+        </thead>
+        <tbody>
+            <tr>
+                <div class="parallax1">
+                    <div class="panel panel-success row">
+                        <div class="panel-body">
+                            <div class="col-md-6">
+                                <img src="~/images/a-motto.png" width="400" height="270" />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="panel-heading blak"><b>Count of Donations</b></div>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span class="badge">@Model.TotalCountOfClothesDonates</span>
+                                        Clothings
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="badge">@Model.TotalCountOfMoneyDonates</span>
+                                        Money 
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="badge">@Model.TotalCountOfGoodsDonates</span>
+                                        Goods 
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="badge">@Model.TotalCountOfMedicalDonates</span>
+                                        Medicals 
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="alert alert-success labels" style="text-align:right;">Total Amount of Money Donated is =<b> @Model.TotalAmontOfMoney</b></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <span class="badge">@Model.TotalCountOfClothesDonates</span>
-                            Count of Clothes Donates is
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge">@Model.TotalCountOfMoneyDonates</span>
-                            Count of money Donates is
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge">@Model.TotalCountOfGoodsDonates</span>
-                            Count of Goods Donates is
-                        </li>
-                        <li class="list-group-item">
-                            <span class="badge">@Model.TotalCountOfMedicalDonates</span>
-                            Count of Medicals Donates is
-                        </li>
-                    </ul>
+            </tr>
+            <tr>
+                <td>
+                    <div class="row parallax1">
+                        <div class="panel-heading blak" ><b>Donate Type vs Total Values</b></div>
+                        <div ID="chart-container" style="text-align:center;"></div><br />
+                        <div class="well well-sm col-md-offset-1 col-md-10">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Name of Donates</th>
+                                        <th>Value in $</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Total Values of Donation from  Cloths:</td>
+                                        <td>$@Model.ClothTotalValue</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Values of Donation from  Goods:</td>
+                                        <td>$@Model.GoodsTotalValue</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Values of Donation from  Money:</td>
+                                        <td>$@Model.MoneyTotalValue</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Total Values of Donation from Medicals:</td>
+                                        <td>$@Model.MedicalTotalValue</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="panel panel-success" style="text-align:center;">
+                        <div class="panel-heading blak" style="text-align:center;"><b>List Of All Donates</b></div>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.ActionLink("Donates Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("Value in $", "Index", new { sortOrder = ViewBag.ValueSortParm })
+                                    </th>
+                                    <th>
+                                        @Html.ActionLink("DateCreated", "Index", new { sortOrder = ViewBag.DateSortParm })
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{
+                                    var theRole = Model.UserRole;
+                                }
+                                @foreach (var item in Model.donatesss)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Value)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateCreated)
+                                        </td>
+                                        @if (theRole == "Administrator")//check if logged in user exists
+                                        {
+                                            <td>
+                                                <a asp-action="Edit" asp-route-id="@item.DonateId" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-edit" title="Edit"></i></a> |
+                                                <a asp-route-id="@item.DonateId" asp-action="Details" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-info-sign" title="Details"></i></a> |
+                                                <a asp-action="Delete" asp-route-id="@item.DonateId" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-trash" title="Delete"></i></a>
+                                            </td>
+                                        }
+                                        else { }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!--MODAL-->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body" id="divModalBody">
                 </div>
-                <div class="alert alert-success">Total Amount of Money Donated is = @Model.TotalAmontOfMoney.</div>
             </div>
-        </div>
-    </div>
-    <div class="row parallax1">
-        <div class="col-md-6">
-            <div ID="chart-container"></div><br />
-            <div class="well well-sm">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Name of Donates</th>
-                            <th>Value in $</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Total Values from Cloths donations :</td>
-                            <td>$@Model.ClothTotalValue</td>
-                         </tr>
-                        <tr>
-                            <td>Total Values from Goods donations:</td>
-                            <td>$@Model.GoodsTotalValue</td>
-                        </tr>
-                        <tr>
-                            <td>Total Values v Money donations:</td>
-                            <td>$@Model.MoneyTotalValue</td>
-                        </tr>
-                        <tr>
-                            <td>Total Values from Medicals donations:</td>
-                            <td>$@Model.MedicalTotalValue</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        
-        <div class="panel panel-success col-md-offset-6">
-            <div class="panel-heading blak" style="text-align:center;"><b>ChariCare Stat</b></div>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.ActionLink("Donates Name", "Index", new { sortOrder = ViewBag.NameSortParm })
-                        </th>
-                        <th>
-                            @Html.ActionLink("Value in $", "Index", new { sortOrder = ViewBag.ValueSortParm })
-                        </th>
-                        <th>
-                            @Html.ActionLink("DateCreated", "Index", new { sortOrder = ViewBag.DateSortParm })
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.donatesss)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Name)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Value)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.DateCreated)
-                            </td>
-                            @if (@User.Identity.IsAuthenticated)//check if logged in user exists
-                            {
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.DonateId"><i class="glyphicon glyphicon-edit" title="Edit"></i></a> |
-                                    <a asp-action="Details" asp-route-id="@item.DonateId"><i class="glyphicon glyphicon-info-sign" title="Details"></i></a> |
-                                    <a asp-action="Delete" asp-route-id="@item.DonateId"><i class="glyphicon glyphicon-trash" title="Delete"></i></a>
-                                </td>
-                            }
-                            else
-                            {
-                                <td></td>
-                            }
-                        </tr>
-                    }
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
+
+
+
+
+
 

@@ -9,20 +9,26 @@ using Charicare2.Data;
 using Charicare2.Models;
 using Microsoft.AspNetCore.Identity;
 using Charicare2.Models.AppViewModels;
+using Charicare2.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace Charicare2.Controllers
 {
     public class DonateController : Controller
     {
         private ApplicationDbContext context;
+        private PaymentSettings _paymentSettings;
+
 
         //Constructor functions that takes context 
         //and sets them to the private variables above
-        
-        public DonateController(ApplicationDbContext ctx)
+
+        public DonateController(ApplicationDbContext ctx, IOptions<PaymentSettings> paymentSettings)
         {
             context = ctx;
+            _paymentSettings = paymentSettings.Value;
         }
+
 
         // GET: Donate
         
@@ -70,6 +76,7 @@ namespace Charicare2.Controllers
                 return BadRequest(ModelState);
             }
 
+            ViewBag.StripeKey = _paymentSettings.StripePublicKey;
             model.CustomerId = ActiveUser.Instance.Customer.CustomerId;
             Donate d = new Donate();
             d.DonateTypeId = ActiveUser.Instance.DonateTypeId;
@@ -91,16 +98,21 @@ namespace Charicare2.Controllers
             }
         }
 
+        // GET: /Donate/StripeCheckout
         public IActionResult StripeCheckout()
         {
+            ViewBag.StripeKey = _paymentSettings.StripePublicKey;
             StripeFormViewModel model = new StripeFormViewModel();
             return View(model);
         }
 
+        // POST: /Donate/Charge
         public IActionResult Charge()
         {
+            ViewBag.StripeKey = _paymentSettings.StripePublicKey;
             return RedirectToAction("ThankYou", "Donate");
         }
+        
 
 
         //Form MEDICAL Donation Form/Index
@@ -170,7 +182,8 @@ namespace Charicare2.Controllers
 
         public IActionResult ThankYou(NewDonateCreateViewModel model)
         {
-            model.Donator = ActiveUser.Instance.Customer.FullName;
+            model.DonatorFirstName = ActiveUser.Instance.Customer.FirstName;
+            model.DonatorLastName = ActiveUser.Instance.Customer.LastName;
             return View(model);
         }
 

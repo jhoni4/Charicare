@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Charicare2.Data;
 using Charicare2.Models;
+using Microsoft.AspNetCore.Authorization;
+using Charicare2.Configuration;
 
 namespace Charicare2
 {
@@ -27,7 +29,7 @@ namespace Charicare2
             if (env.IsDevelopment())
             {
                 // For more details on using the user secret store see http://go.microsoft.com/fwlink/?LinkID=532709
-                //builder.AddUserSecrets();
+                builder.AddUserSecrets();
 
                 // This will push telemetry data through Application Insights pipeline faster, allowing you to view results immediately.
                 builder.AddApplicationInsightsSettings(developerMode: true);
@@ -41,6 +43,9 @@ namespace Charicare2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Add PaymentSettings informations
+            services.Configure<PaymentSettings>(Configuration.GetSection("PaymentSettings")); //3rd step
+
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 

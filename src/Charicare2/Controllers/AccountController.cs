@@ -87,6 +87,7 @@ namespace Charicare2.Controllers
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
+            //return RedirectToAction
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
@@ -113,6 +114,10 @@ namespace Charicare2.Controllers
                     //    $"Please confirm your account by clicking this link: <a href='{callbackUrl}'>link</a>");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation(3, "User created a new account with password.");
+                   
+                        // Assign the admin user to the Administrator role that was
+                        // created in DbInitialize
+                    await _userManager.AddToRoleAsync(user, "MEMBER");
                     return RedirectToLocal(returnUrl);
                 }
                 AddErrors(result);

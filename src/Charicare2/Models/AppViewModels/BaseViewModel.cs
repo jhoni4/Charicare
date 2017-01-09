@@ -14,12 +14,28 @@ namespace Charicare2.Models.AppViewModels
         public Donate Donate { get; set; }
 
         public string LastPerson { get; set; }
-        
+
         public string Donator { get; set; }
 
         public int CustomerId { get; set; }
 
         public int DonateTypeId { get; set; }
+
+        public int DonateId { get; set; }
+
+        public string Name { get; set; }
+
+        public string Note { get; set; }
+
+        public double Value { get; set; }
+
+        public string DonatorFirstName { get; set;}
+
+        public string DonatorLastName { get; set; }
+
+        public DateTime DateCreated { get; set; }
+        public Customer danatedBy { get; internal set; }
+        public DonateType donatType { get; internal set; }
 
         public BaseViewModel() { }
 

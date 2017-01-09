@@ -49,13 +49,13 @@ namespace Charicare2.Controllers
                 return BadRequest(ModelState);
             }
 
-            if (context.Customer.Where(e => e.FullName == model.Customer.FullName && e.Email == model.Customer.Email).SingleOrDefault() != null)
+            if (context.Customer.Where(e => e.FirstName == model.Customer.FirstName && e.Email == model.Customer.Email).SingleOrDefault() != null)
             {
                 Customer u = new Customer();
-                u = await context.Customer.Where(e => e.FullName == model.Customer.FullName && e.Email == model.Customer.Email).SingleOrDefaultAsync();
+                u = await context.Customer.Where(e => e.FirstName == model.Customer.FirstName && e.Email == model.Customer.Email).SingleOrDefaultAsync();
                 model.DonateTypeId = Id;
 
-                var LastPerson = u.FullName;
+                //var LastPerson = u.FirstName;
                 ActiveUser.Instance.Customer = u;
                 ActiveUser.Instance.DonateTypeId = Id;
 
@@ -77,7 +77,8 @@ namespace Charicare2.Controllers
             else
             {
                 Customer u = new Customer();
-                u.FullName = model.Customer.FullName;
+                u.FirstName = model.Customer.FirstName;
+                u.LastName = model.Customer.LastName;
                 u.Email = model.Customer.Email;
                 u.Street = model.Customer.Street;
                 u.City = model.Customer.City;

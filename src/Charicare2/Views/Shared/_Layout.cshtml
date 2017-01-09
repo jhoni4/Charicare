@@ -9,6 +9,8 @@
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="https://checkout.stripe.com/v3/checkout/button.css"/>
+        <link rel="stylesheet" href="https://checkout.stripe.com/v3/checkout/button.css" />
+        <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Kumar+One|Righteous|Shrikhand" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Sigmar+One" rel="stylesheet">
     </environment>
@@ -16,7 +18,12 @@
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="https://checkout.stripe.com/v3/checkout/button.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Kumar+One|Righteous|Shrikhand" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Sigmar+One" rel="stylesheet">
     </environment>
     @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
@@ -61,8 +68,10 @@
     <div class="body">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; 2016 - Charicare</p>
+        <footer id="">
+            <div class="panel-footer labels" style="background-color:forestgreen;">
+                <p>&copy; 2017 - Charicare Seniors help</p>
+            </div>
         </footer>
     </div>
 
@@ -72,6 +81,8 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="https://use.fontawesome.com/your-embed-code.js"></script> 
+        <script type="text/javascript" src="https://checkout.stripe.com/checkout.js"></script>
+        <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
      </environment>
     <environment names="Staging,Production">
@@ -79,14 +90,20 @@
                 asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
                 asp-fallback-test="window.jQuery">
         </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
+        <script type="text/javascript" src="https://checkout.stripe.com/checkout.js"></script>
+        <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="https://use.fontawesome.com/your-embed-code.js"></script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.js"></script>
         <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.maps.js"></script>
-        <script src="https://use.fontawesome.com/your-embed-code.js"></script> 
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
 
     @RenderSection("scripts", required: false)

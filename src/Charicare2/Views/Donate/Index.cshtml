@@ -4,22 +4,27 @@
     ViewData["Title"] = "Donate Categories";
     ViewData["Message"] = "Your donations to The ChariCare,  help transform lives! It is financial contributions that make it possible for The ChariCare Mission, Seniors helping Camp and hope to the homeless and poor in Ethiopia. ";
 }
-<br />
-<br />
-<div id="homeContainer">
-    <div class="jumbotron welcome2">
-            <hr />
-            <p>We started ChariCare Inc. to bring hope to the poor and  helpless elderlies located in Ethiopia, Through housing, food programs, and medical care. we can make a difference in their lives. Our goals is to Build Love, provide help and Restore hope those elderlies.
-            <p>
-                <b>ETHIOPIA AND THE ELDERLY</b>
-                Ethiopia has a growing population of elderly people. According to the BBC, the population of the elderly is expected to grow 55% by 2050. As this population increases, so do the number of poor, homeless, and hungry elderly.
-            </p>
-            <p>
-                <b>LACK OF SUPPORT</b>
-                There is no provision for programs of social security or other financial support for the elderly. Many are unable to work due to illness or age. These elderly are unable to care for themselves and their grandchildren.
-            </p>
-    </div>
+@{ 
+    <script type="text/javascript">
+        function CreateEmployeeModal() {
+            var url = $("#btnCreateEmployeeModal").data("mine");
+            $.ajax({
+                type: 'get',
+                url: url
+            }).success(function (result) {
+                console.log(result); //better than alert
 
+                $("#textboxCorrespondingToValue").val(result.valueCorrespondingToTextbox);
+
+                $("#MyModal").modal('show');
+            }).error(function () {
+                alert("didn't work");
+            })
+        }
+    </script>
+}
+<br /><br /><br /><br /><br /><br />
+<div id="homeContainer">
     <div class="parallax2">
         <div class="blak">
             <h1>CHANGE LIVES - DONATE NOW</h1>    
@@ -34,7 +39,7 @@
                                     <h3>Donate Clothes</h3>
                                 </div>
                             </div>
-                            <img src="~/images/clothes1.png" alt="Clothes pic" width="500" height="300" />
+                            <img src="~/images/clothes1.png" alt="Clothes pic" width="400" height="200" />
                         </a>
                     </div>
                 </div>
@@ -46,7 +51,7 @@
                                     <h3>Donate Money</h3>
                                 </div>
                             </div>
-                            <img src="~/images/m2.png" alt="Money pic" width="500" height="300" />
+                            <img src="~/images/m2.png" alt="Money pic" width="400" height="200" />
                         </a>
                     </div>
                 </div>
@@ -60,7 +65,7 @@
                                     <h3>Donate Goods</h3>
                                 </div>
                             </div>
-                            <img src="~/images/g1.png" alt="Goods pic" width="500" height="300" />
+                            <img src="~/images/g1.png" alt="Goods pic" width="400" height="200" />
                         </a>
                     </div>
                 </div>
@@ -72,11 +77,11 @@
                                     <h3>Donate Medical</h3>
                                 </div>
                             </div>
-                            <img src="~/images/med4.png" alt="Medical pic" width="500" height="300" />
+                            <img src="~/images/med4.png" alt="Medical pic" width="400" height="200" />
                         </a>
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
     </div>
 </div>

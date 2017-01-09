@@ -28,6 +28,11 @@
             <div class="col-md-7">
                 <form asp-controller="Donate" asp-action="DonateCreate">
                     @{Html.RenderPartial("_DonateForm");}
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-5">
+                            <input type="submit" value="Submit" class="btn btn-primary" onclick="document.clearBtn.reset();" />
+                        </div>
+                    </div>
                 </form>
             </div>
             <div class="col-md-4">
