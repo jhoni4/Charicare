@@ -12,6 +12,7 @@
      color:slategrey;
      text-shadow: 0.5px 1px 0.5px #8E8E8E;
      font-size:20px;
+     background: url(~/images/lime4.jpg) no-repeat;
  }
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
@@ -134,7 +135,12 @@ textarea {
 
 #clothpage, #GoodsPage, #MedicalPage, #MoneyPage, #welcome2, #dashboardPage, #thankyouContainer, #FormContainer {
     color: darkgreen;
-    margin-top:200px;
+    /*margin-top:20px;*/
+}
+#aboutContainer {
+    background-image:url(../images/lime4.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
 }
   
 .navbar-inverse .navbar-nav > li > a {  
@@ -201,4 +207,6 @@ textarea {
      font-size:18px;
  }
  
+ #footer { position: fixed; bottom: 0; height: 30px; background: #000; width: 100%; text-align: center; color : #fff;}
+
  

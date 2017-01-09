@@ -1,5 +1,5 @@
 ﻿//////////////STRIPE////////////
-Stripe.setPublishableKey('pk_test_y2eBblD7FUgXHkO3s0BCxdek');
+Stripe.setPublishableKey(myKey);
 $(function () {
     var $form = $('#payment-form');
     $form.submit(function (event) {
