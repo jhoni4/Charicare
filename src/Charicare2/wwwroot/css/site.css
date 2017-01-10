@@ -12,8 +12,13 @@
      color:slategrey;
      text-shadow: 0.5px 1px 0.5px #8E8E8E;
      font-size:20px;
-     background: url(~/images/lime4.jpg) no-repeat;
- }
+     background-image: url("/images/lime4.jpg");
+    /*font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+    text-align:left;
+    background-repeat:no-repeat;
+    background-size:cover;
+    padding:2%;
+}
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
@@ -40,7 +45,6 @@
     background-color:black; 
     color:chartreuse;
     font-size: 3rem;
-    text-align:center;
 }
 
 /* Set widths on the form inputs since otherwise they're 100% wide */
@@ -79,7 +83,6 @@ textarea {
     display: block;
 }
 .menuLink a .caption {
-  background-color: rgba(57, 135, 12, 0.22);
   position: absolute;
   margin-bottom: 8px;
   border-radius: 8px;
@@ -88,7 +91,9 @@ textarea {
   opacity: 0;
   padding-top: 5%;
   box-shadow: 4px 2px 6px #8E8E8E; 
+  background-color: rgba(57, 135, 12, 0.22);
   -webkit-box-shadow: 4px 2px 6px #8E8E8E;
+  /*-moz-box-shadow:rgba(57, 135, 12, 0.11);*/
 }
 .menuLink .caption .caption-content {
     color: black;
@@ -104,22 +109,21 @@ textarea {
     max-width: 70%;
     margin-left: 15%;
 }
-.welcome2 well {
+/*.welcome2 {
     text-align:left;
-     background: no-repeat round url("/images/ban22.jpg");
-     background-repeat:no-repeat;
-     background-size:cover;
-     padding:2%;
-     
-}
-.welcome2 {
+    background: no-repeat round url("/images/ban22.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    padding:2%;
+}*/
+/*.welcome2 Firstheader {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align:left;
-     background-image:url("/images/lime9.png");
-     background-repeat:no-repeat;
-     background-size:cover;
-     padding:2%;
-}
+    background-image:url("/images/ban22.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    padding:2%;
+}*/
 .navbar {
     background-color: #39870C; 
     z-index:3;
