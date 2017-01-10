@@ -9,6 +9,19 @@ using Charicare2.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
+/**
+ * Class: CustomerController
+ * Purpose: Define all methods that interract with the customer table in the database, and routes to create new customer.
+ * Author: YONATAN MOLLA
+ * Methods:
+ *   CustomerController(ApplicationDbContext ctx) - constructor used to access all of the database models
+ *      ApplicationDbContext ctx- database contents
+ *   CustomerIndex([FromRoute]int Id) - Get call that will load the initial blank customer create form view
+ *   CustomerCreate(CustomerFormViewModel model, [FromRoute]int Id) - overloaded Post call that will submit the completed form to add new customer  and result equal to the ActiveUser
+ *      
+ *   
+ */
+
 namespace Charicare2.Controllers
 {
     public class CustomerController : Controller

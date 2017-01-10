@@ -12,6 +12,22 @@ using Charicare2.Models.AppViewModels;
 using Charicare2.Configuration;
 using Microsoft.Extensions.Options;
 
+// "/**",
+// " * Class: DonateController",
+// " * Purpose: is a Donate constructor that enables the customer to create new Donates by grouping together variables of other types, methods and events. and lets you view Donates and Donatetypes.",
+// " * Author: YONATAN MOLLA",
+// " * Methods:",
+// " *   Index() - When the page loads user be able to see list of all donatetypes options to choose from",
+// " *   ClothesIndex() - When a user clicks on Clothes  donatetype link on the home page he will be able to see a customer form to fill out for Clothesdonation",
+// " *   GoodsIndex() - When a user clicks on Goods donatetype link on the home page he will be able to see a customer form to fill out for Goodsdonation",
+// " *   MedicalIndex() - When a user clicks on Medical  donatetype link on the home page he will be able to see a customer form to fill out for Medicaldonation",
+// " *   MoneyIndex() - When a user clicks on Money  donatetype link on the home page he will be able to see a customer form to fill out for Moneydonation",
+// " *   StripeForm(NewDonateCreateViewModel model, [FromRoute] int Id) - When User on MoneyDonation  page  choose to pay using stripe and clicks on button STRIPEPAY then page takes the customerId of clicking customer saves the detail from the previous form to the database then redirect them to strime card form",
+// " *   Charge() - When User clicks on pay on stripe card form the detail will be submited to stripe.com",
+// " */"
+
+
+
 namespace Charicare2.Controllers
 {
     public class DonateController : Controller
@@ -177,8 +193,8 @@ namespace Charicare2.Controllers
             }
 
         }
-       
 
+       // Thankyou() a method that will be called after all the donations succedes 
 
         public IActionResult ThankYou(NewDonateCreateViewModel model)
         {
