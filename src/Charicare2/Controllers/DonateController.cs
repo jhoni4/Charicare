@@ -165,14 +165,14 @@ namespace Charicare2.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DonateCreate(NewDonateCreateViewModel model, [FromRoute] int Id)
+        public IActionResult DonateCreate(NewDonateCreateViewModel model, [FromRoute] int Id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            model.CustomerId = ActiveUser.Instance.Customer.CustomerId;
+            model.CustomerId =  ActiveUser.Instance.Customer.CustomerId;
             Donate d = new Donate();
             d.DonateTypeId = ActiveUser.Instance.DonateTypeId;
             d.Name = model.Donate.Name;

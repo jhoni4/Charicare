@@ -1,11 +1,11 @@
 ﻿@model Charicare2.Models.AppViewModels.StripeFormViewModel
 
-@{
-    ViewData["Title"] = "Donor's  card information";
+@{ 
     <script type="text/javascript">
-        var myKey = '@ViewBag.StripeKey';
-    </script> 
-
+            var myKey = '@ViewBag.StripeKey';
+    </script>
+  
+    ViewData["Title"] = "Donor's  card information";
 }
 
 <div class="row FormContainer">
@@ -47,7 +47,7 @@
             </form>
         </div>
     </div>
-    <img style="float:right" src="~/images/stripe_logos.png" alt="Credit or any major credit card" width="300" height="" />
+    <img style="float:right" src="~/images/stripe_logos.png" alt="Credit or any major credit card" width="300" />
     </div>
 </div>
     @section Scripts {

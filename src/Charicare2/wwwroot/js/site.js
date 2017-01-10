@@ -1,4 +1,5 @@
 ﻿//////////////STRIPE////////////
+
 Stripe.setPublishableKey(myKey);
 $(function () {
     var $form = $('#payment-form');
@@ -35,7 +36,5 @@ function stripeResponseHandler(status, response) {
 
         // Submit the form:
         $form.get(0).submit();
-
     }
-};
-  
+}
