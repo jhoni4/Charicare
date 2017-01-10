@@ -94,9 +94,6 @@
                 asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
                 asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
         </script>
-        <script type="text/javascript" src="https://checkout.stripe.com/checkout.js"></script>
-        <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="https://use.fontawesome.com/your-embed-code.js"></script>
@@ -104,6 +101,9 @@
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.js"></script>
         <script type="text/javascript" src="~/lib/fusioncharts/fusioncharts.maps.js"></script>
+        <script type="text/javascript" src="https://checkout.stripe.com/checkout.js"></script>
+        <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
     </environment>
 
     @RenderSection("scripts", required: false)

@@ -15,6 +15,18 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 
+// "/**",
+// " * Class: DashboardController",
+// " * Purpose: is a dashboard constructor that enables the Admin user to edit, view and delete donates by. And lets you view charts and tabular details of donats",
+// " * Author: YONATAN MOLLA",
+// " * Methods:",
+// " *   Index() - When the page loads user be able to see list of all donates from the context in diffrent modes ",
+// " *   Detail([FromRoute]int id) - When a Adminuser on Dashboard page clicks on any hyperlinked detail icons then page takes the donateId of clicked Donate and lists out detail of that Donate",
+// " *   Edit([FromRoute]int? id) - When a Adminuser on Dashboard page clicks on any hyperlinked edit icons then page takes the donateId of clicked Donate and lists out edit form of that Donate",
+// " *   Edit(int id, [Bind("DonateId,Name,Value,Note,DonateTypeId,DateCreated,CustomerId")] Donate donate) updates the context (bind used To protect from overposting attacks)
+// " *   Delete([FromRoute]int? id) - When a Adminuser on Dashboard page clicks on any hyperlinked Delete icons then page takes the donateId of clicked Donate and lists out Delete form of that Donate",
+// " */"
+
 namespace Charicare2.Controllers
 {
     public class DashboardController : Controller
@@ -132,10 +144,7 @@ namespace Charicare2.Controllers
             ViewBag.Id = Id;
             return PartialView("ModalContent");
         }
-        public PartialViewResult CreateUsingModal()
-        {
-            return PartialView();
-        }
+
         // GET: Donate/Details/5
         [Authorize]
         public async Task<IActionResult> Details(int? id)
